@@ -1,2 +1,4 @@
 # simulation
-ENSwR simulation as used in Papale et al. (2025)
+This repository hosts the ENSwR simulation used in Papale et al. (2025)
+
+Repository is currently under construction...

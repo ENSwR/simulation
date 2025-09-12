@@ -39,6 +39,7 @@ venv\bin\Activate.ps1
 # Running simulation with config file
 ```
 python3 <path/to/run_sim.py> [path/to/config] 
+
 Example:
 python3 src/run_sim.py configs/1a.config
 ```

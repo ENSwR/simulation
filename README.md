@@ -22,7 +22,7 @@ Files associated with this virtual environment are found in the [venv](#venv) di
 To run this simulation:
 
 1. [Activate the virtual environment](#activating-the-virtual-environment)
-2. [Execute run_sim.py and provide a config file](#executing-run_simpy-with-config-fileg)
+2. [Run simulation with a config file](#running-simulation-with-config-fileg)
 3. Result output paths are set by the config files. In the provided configs,
 resulting output will be sent to the [results](#results) directory.
 
@@ -36,7 +36,7 @@ source venv/bin/activate
 venv\bin\Activate.ps1
 ```
 
-# Executing run_sim.py with config file
+# Running simulation with config file
 ```
 python3 <path/to/run_sim.py> [path/to/config] 
 Example:

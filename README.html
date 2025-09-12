@@ -362,12 +362,15 @@ al. (2025)</p>
 <p>It is recommended to run this simulation using the included virtual
 environment for Python, which has all dependencies pre-installed.</p>
 <p>Files associated with this virtual environment are found in the <a href="#venv">venv</a> directory.</p>
+<p>To run this simulation:</p>
 <ol style="list-style-type: decimal">
 <li><a href="#Activating-the-virtual-environment">Activate the virtual
 environment</a></li>
-<li><code>python3 src/run_sim.py [path-to-config]  &lt;br/&gt;testingtest2</code></li>
+<li><a href="#Executing-run_sim.py-with-config">Execute run_sim.py and
+provide a config file</a></li>
+<li>Result output paths are set by the config files. In the provided
+configs, resulting output will be sent to the <a href="#tesults">results</a> directory.</li>
 </ol>
-<p><code>Examplpython3 src/run_sim.py configs/1a.config&gt;</code></p>
 <div id="activating-the-virtual-environment" class="section level2">
 <h2>Activating the virtual environment</h2>
 <div id="macoslinux" class="section level3">
@@ -378,6 +381,12 @@ environment</a></li>
 <h3>Windows (PowerShell)</h3>
 <pre><code>venv\bin\Activate.ps1</code></pre>
 </div>
+</div>
+<div id="executing-run_sim.py-with-config-file" class="section level2">
+<h2>Executing run_sim.py with config file</h2>
+<pre><code>python3 &lt;path/to/run_sim.py&gt; [path/to/config] 
+Example:
+python3 src/run_sim.py configs/1a.config</code></pre>
 </div>
 <div id="venv" class="section level2">
 <h2>venv</h2>
@@ -400,6 +409,16 @@ data they produce.</p>
 found in <a href="#configs">configs</a>. It contains ‘.csv’ files, where
 the raw data from each simulation run gets stored, as well as associated
 ‘.seed’ files which list a history of seed values for previous runs.</p>
+<p>Results from the runs using the provided config files are already
+included, and can be reproduced again by running the simulation with the
+config files again.</p>
+<p><strong>Note:</strong> Results for simulation with 4.config are not
+included due to filesize. This simulation config runs 2,100,000
+timesteps on a 10x10 environment. The resulting .csv is approximately
+12GB. To obtain these results, please run the simulation using 4.config
+and allow considerable time for the simulation to run through each
+timestep. Expect a long wait after the final timestep while the results
+file is created.</p>
 </div>
 </div>
 

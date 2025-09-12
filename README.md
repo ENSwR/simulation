@@ -14,6 +14,6 @@ The scr directory contains the source code for the simulation.
 
 ## results
 The results directory is the output directory for the ".config" files found in 
-configs. It contains '.csv' files, where the raw data from each simulation run 
+[configs](#configs). It contains '.csv' files, where the raw data from each simulation run 
 gets stored, as well as associated '.seed' files which list a history of seed
 values for previous runs.

@@ -8,9 +8,11 @@ for Python, which has all dependencies pre-installed.
 Files associated with this virtual environment are found in the [venv](#venv) directory.
 
 1. [Activate the virtual environment](#Activating-the-virtual-environment)
-2. ```python3 src/run_sim.py [path-to-config] 
+2. ```
+python3 src/run_sim.py [path-to-config] 
 Example:
-python3 src/run_sim.py configs/1a.config```
+python3 src/run_sim.py configs/1a.config
+```
 
 ## Activating the virtual environment
 ### MacOS/Linux

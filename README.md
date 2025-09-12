@@ -5,7 +5,7 @@ This repository hosts the ENSwR simulation used in Papale et al. (2025)
 This simulation requires a plain-text configuration file to be provided.
 
 ## Outputs
-During runtime this simulation prints the current running timestep to console.
+During runtime this simulation prints the actively running timestep to console.
 Upon completion, the simulation's seed number will be printed to console. If the 
 config file does not specify a seed, then the seed will be randomly generated.
 

@@ -22,7 +22,7 @@ Files associated with this virtual environment are found in the [venv](#venv) di
 To run this simulation:
 
 1. [Activate the virtual environment](#activating-the-virtual-environment)
-2. [Run simulation with a config file](#running-simulation-with-config-fileg)
+2. [Run simulation with a config file](#running-simulation-with-config-file)
 3. Result output paths are set by the config files. In the provided configs,
 resulting output will be sent to the [results](#results) directory.
 

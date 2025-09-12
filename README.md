@@ -21,8 +21,8 @@ Files associated with this virtual environment are found in the [venv](#venv) di
 
 To run this simulation:
 
-1. [Activate the virtual environment](#Activating-the-virtual-environment)
-2. [Execute run_sim.py and provide a config file](#Executing-run_sim.py-with-config)
+1. [Activate the virtual environment](#activating-the-virtual-environment)
+2. [Execute run_sim.py and provide a config file](#executing-run_simpy-with-config-fileg)
 3. Result output paths are set by the config files. In the provided configs,
 resulting output will be sent to the [results](#tesults) directory.
 

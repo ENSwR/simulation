@@ -352,97 +352,165 @@ display: none;
 </div>
 
 
-<div id="enswr-simulation" class="section level1">
-<h1>ENSwR Simulation</h1>
-<p>This repository hosts the ENSwR simulation used in Papale et
-al. (2025)</p>
-<div id="inputs" class="section level2">
-<h2>Inputs</h2>
-<p>This simulation requires a plain-text configuration file to be
-provided.</p>
+<div id="configs" class="section level1">
+<h1>configs</h1>
+<p>This directory contains the configuration files used to produce the
+figures for Papale et al. (2025). Files are named for the figure data
+they correspond to.</p>
+<p>The order of the parameters is not important, but parameters must be
+set under their correct headings (eg. [Dials]). Parameters which are not
+included will take on default values.</p>
+<div id="dials" class="section level2">
+<h2>[Dials]</h2>
+<p>Sets the simulation and environment parameters.</p>
+<div id="seed" class="section level3">
+<h3>seed</h3>
+<p>Integer value for the random seed, which allows pseudo-random number
+generation to be reproducible.</p>
+<p><strong>Default: A number will be generated.</strong></p>
 </div>
-<div id="outputs" class="section level2">
-<h2>Outputs</h2>
-<p>During runtime this simulation prints the actively running timestep
-to console. Upon completion, the simulation’s seed number will be
-printed to console. If the config file does not specify a seed, then the
-seed will be randomly generated.</p>
-<p>At the end of runtime a .csv file will be output to the filepath
-specified in the config file. The seed number and a timestamp will be
-appended to a .seed file with the same name.</p>
+<div id="timesteps" class="section level3">
+<h3>timesteps</h3>
+<p>Integer value for the number of timesteps the simulation will run
+for.</p>
+<p><strong>Default: 0</strong></p>
+<p><strong>Note:</strong> The simulation starts counting from timestep
+0, so the last timestep of the simulation will be
+<em>timesteps</em>-1.</p>
+</div>
+<div id="extinction_gap" class="section level3">
+<h3>extinction_gap</h3>
+<p>Integer value for the number of timesteps between extinctions.</p>
+<p><strong>Default: 0</strong></p>
+<p><strong>Note:</strong> An extinction occupies a timestep, so if
+<em>extinction_gap</em>=2 the simulation will start at <em>t=0</em>,
+populations will grow for <em>t=1</em> and <em>t=2</em>, an extinction
+occurs at <em>t=3</em> and population growth begins again at
+<em>t=4</em>.</p>
+</div>
+<div id="environment_xy" class="section level3">
+<h3>environment_x/y</h3>
+<p>Integer values for dimensions of environment’s x and y dimensions.
+Each unit represents a GridCell micro-environment, so a 10x10
+environment will contain 100 GridCell micro-environments.</p>
+<p><strong>Default x: 0</strong> <strong>Default y: 0</strong></p>
+</div>
+<div id="output_file" class="section level3">
+<h3>output_file</h3>
+<p>String filepath where resulting ‘.csv’ and ‘.seed’ files will be
+written to.</p>
+<p><strong>Default: Current working directory</strong></p>
+<p><strong>Note:</strong> Relative filepaths are supported, but the
+current working directory will be the working directory that initiated
+the simulation.</p>
+</div>
+<div id="decay" class="section level3">
+<h3>decay</h3>
+<p>Boolean (True/False) which toggles whether the model will include
+decay functionality.</p>
+<p><strong>Default: False</strong></p>
+<p><strong>Note:</strong> If decay is enabled then a <a href="#lifespan-(required-for-decay)">lifespan</a> parameter must be
+configured for both species, otherwise an error will be produced.</p>
+</div>
+<div id="diffusion" class="section level3">
+<h3>diffusion</h3>
+<p>Boolean (True/False) which toggles whether the model will include
+diffusion functionality.</p>
+<p><strong>Default: False</strong></p>
+<p><strong>Note:</strong> If diffusion is enabled then an environment
+larger than 1x1 is required.</p>
+</div>
+<div id="infinite_resources" class="section level3">
+<h3>infinite_resources</h3>
+<p>Boolean (True/False) which toggles whether the model will include
+resource limitation.</p>
+<p><strong>Default: False</strong></p>
 </div>
 </div>
-<div id="running-the-simulation" class="section level1">
-<h1>Running the Simulation</h1>
-<p>It is recommended to run this simulation using the included virtual
-environment for Python, which has all dependencies pre-installed.</p>
-<p>Files associated with this virtual environment are found in the <a href="#venv">venv</a> directory.</p>
-<p>To run this simulation:</p>
-<ol style="list-style-type: decimal">
-<li><a href="#activating-the-virtual-environment">Activate the virtual
-environment</a></li>
-<li><a href="#running-simulation-with-config-file">Run simulation with a
-config file</a></li>
-<li>Result output paths are set by the config files. In the provided
-configs, resulting output will be sent to the <a href="#results">results</a> directory.</li>
-</ol>
-<div id="activating-the-virtual-environment" class="section level2">
-<h2>Activating the virtual environment</h2>
-<div id="macoslinux" class="section level3">
-<h3>MacOS/Linux</h3>
-<pre><code>source venv/bin/activate</code></pre>
+<div id="species_x" class="section level2">
+<h2>[Species_X]</h2>
+<p>Sets the species-specific parameters.</p>
+<p>While Species A and Species B are used throughout Papale et
+al. (2025), the simulation supports a Species C and Species D for a
+maximum of 4 species in a simulated run.</p>
+<p>If a species is not configured it is not included in the
+simulation.</p>
+<div id="x_niche_construction-required" class="section level3">
+<h3>X_niche_construction (required)</h3>
+<p>Integer value for the niche construction value of the indicated
+species. In this release, the parameter name must explicitly indicate
+the same species associated with the species of its associated header.
+This parameter must be correctly configured to run the simulation.</p>
+<p>Eg:<br /> [Species_<strong>A</strong>]<br />
+<strong>B</strong>_niche_construction = 2</p>
+<p>Will produce an error.</p>
+<p>Eg:<br /> [Species_<strong>A</strong>]<br />
+<strong>A</strong>_niche_construction = 2<br />
+<strong>B</strong>_niche_construction = 1</p>
+<p>Will be accepted to correctly configure Species A, but will not apply
+any effects to Species B or its niche.</p>
 </div>
-<div id="windows-powershell" class="section level3">
-<h3>Windows (PowerShell)</h3>
-<pre><code>venv\bin\Activate.ps1</code></pre>
+<div id="lifespan-required-for-decay" class="section level3">
+<h3>lifespan (required for decay)</h3>
+<p>Integer value specifying the number of timesteps a particle of the
+species will persist in the population after it has been created.
+Particles created at timestep <em>t</em> will be removed at timestep
+<em>t+1+lifespan</em></p>
+<p>Eg:<br /> [Species_A]<br /> A_niche_construction = 0<br /> lifespan =
+0<br /> production_bias = 1</p>
+<p>Each timestep 1 particle will be produced, and any particles produced
+in the previous timestep will be be removed. In this example, only 1
+particle can be produced in any timestep, so the population will always
+be 1 for all non-extinction timesteps.</p>
+</div>
+<div id="production_bias-required" class="section level3">
+<h3>production_bias (required)</h3>
+<p>Integer value specifying the bias for production of a species by the
+environment. This value is interpreted differently depending on how <a href="#infinite_resources">infinite_resources</a> is configured.</p>
+<p><strong><a href="#infinite_resources">infinite_resources</a> =
+True</strong> <em>production_bias</em> is the baseline number of
+particles that will be created before niche effects are calculated.</p>
+<p><strong><a href="#infinite_resources">infinite_resources</a> =
+False</strong> <em>production_bias</em> is a factor of the weighting in
+Bernoulli trials, as described in the appendix Equation 2 of Papale et
+al. (2025).</p>
 </div>
 </div>
 </div>
-<div id="running-simulation-with-config-file" class="section level1">
-<h1>Running simulation with config file</h1>
-<pre><code>python3 &lt;path/to/run_sim.py&gt; [path/to/config] 
+<div id="template" class="section level1">
+<h1>Template</h1>
+<p>Below is a blank sample template which can be configured to run your
+own simulations.</p>
+<pre><code>[Dials]
+seed = *integer value*
+timesteps = *integer value*
+extinction_gap = *integer value*
+environment_x = *integer value*
+environment_y = *integer value*
+output_file = *Filepath (do not surround in quotes)*
+decay = *True/False*
+diffusion = *True/False*
+infinite_resources = *True/False*
 
-Example:
-python3 src/run_sim.py configs/1a.config</code></pre>
-<div id="venv" class="section level2">
-<h2>venv</h2>
-<p>The venv directory contains all files associated with a virtual
-environment for Python with all package requirements pre-installed to
-run the simulation.</p>
-</div>
-<div id="configs" class="section level2">
-<h2>configs</h2>
-<p>The configs directory holds “.config” files named for the figures’
-data they produce.</p>
-</div>
-<div id="src" class="section level2">
-<h2>src</h2>
-<p>The scr directory contains the source code for the simulation.</p>
-</div>
-<div id="results" class="section level2">
-<h2>results</h2>
-<p>The results directory is the output directory for the “.config” files
-found in <a href="#configs">configs</a>. It contains ‘.csv’ files, where
-the raw data from each simulation run gets stored, as well as associated
-‘.seed’ files which list a history of seed values for previous runs.</p>
-<p>Results from the runs using the provided config files are already
-included, and can be reproduced again by running the simulation with the
-config files again.</p>
-<p><strong>Note:</strong> Results for simulation with 4.config are not
-included due to filesize. This simulation config runs 2,100,000
-timesteps on a 10x10 environment. The resulting .csv is approximately
-12GB. To obtain these results, please run the simulation using 4.config
-and allow considerable time for the simulation to run through each
-timestep. Expect a long wait after the final timestep while the
-resulting .csv is being created.</p>
-</div>
-<div id="requirements.txt" class="section level2">
-<h2>Requirements.txt</h2>
-<p>Contains the packages and versions info required to run the
-simulation. This file was used to install dependencies for the virtual
-environment <a href="#venv">venv</a></p>
-<p><a href="https://doi.org/10.5281/zenodo.17106872"><img role="img" aria-label="DOI" src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgICAgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJiIiB4Mj0iMCIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bWFzayBpZD0iYSIgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxOTAuODQzNzUiIGhlaWdodD0iMjAiIHJ4PSIzIgogICAgICAgICAgICBmaWxsPSIjZmZmIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxnIG1hc2s9InVybCgjYSkiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxLjM3NXYyMEgweiIgLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iIzAwN2VjNiIKICAgICAgICAgICAgZD0iTTMxLjM3NSAwaDE1OS40Njg3NXYyMEgzMS4zNzV6IgogICAgICAgICAgICAvPgogICAgICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDE5MC44NDM3NXYyMEgweiIgLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLAogICAgICAgIFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNSIgZmlsbD0iIzAxMDEwMSIKICAgICAgICAgICAgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNCI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxMTAuNjA5Mzc1IgogICAgICAgICAgICB5PSIxNSIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICAxMC41MjgxL3plbm9kby4xNzEwNjg3MwogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IHg9IjExMC42MDkzNzUiIHk9IjE0Ij4KICAgICAgICAgICAgICAgIDEwLjUyODEvemVub2RvLjE3MTA2ODczCiAgICAgICAgICAgIDwvdGV4dD4KICAgICAgICA8L2c+CiAgICA8L3N2Zz4=" alt="DOI" /></a></p>
-</div>
+[Species_A]
+A_niche_construction = *integer value*
+lifespan = *integer value*
+production_bias = *integer value*
+
+[Species_B]
+B_niche_construction = *integer value*
+lifespan = *integer value*
+production_bias = *integer value*
+
+[Species_C]
+C_niche_construction = *integer value*
+lifespan = *integer value*
+production_bias = *integer value*
+
+[Species_D]
+D_niche_construction = *integer value*
+lifespan = *integer value*
+production_bias = *integer value*</code></pre>
 </div>
 
 

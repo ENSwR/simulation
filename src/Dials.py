@@ -2,7 +2,7 @@ class Model:
 	def __new__(cls, *args, **kwargs):
 		return super().__new__(cls)
 
-	def __init__ (self, output_file = "",
+	def __init__ (self, output_file = ".",
 						timesteps = 0, 
 						extinction_gap = 0, 
 						species_A = {}, 

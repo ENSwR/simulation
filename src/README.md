@@ -73,17 +73,38 @@ If False, model populations will grow using [binomialDraw](#method-binomialdraw)
 Integer value to set seed value for pseudo-randomly generating numbers.
 
 ## sim.py
-The main method (**main**) is responsible for parsing the [Model](#class-model)
-, initializing the [Environment](#environmentpy), counting timestep (*t*), and 
-invoking the [SimEngine](#simenginepy) to perform functions in sequence for 
-timesteps (**timestep**), extinction timesteps (**extinctionTimestep**), and
-additional diffusion if specified in the [Model](#class-model).
+Handles parsing of configuration file to initialize [Model](#class-model) and 
+[Environment](#environmentpy). Coordinates logistics of moving through timesteps and
+produces output results.
 
-The **timestep** and **extinctionTimestep** functions return tallied results
-for the timestep produced by the [SimEngine](#simenginepy).
+#### *Function: main*
 
-At the end of the simulation, **main** compiles all timestep results and 
-outputs the .csv file, along with an associated .seed file.
+The [main](#function-main) function is responsible for parsing the [Model](#class-model)
+and initializing the [Environment](#environmentpy). This method drives the simulation
+by iterating through timesteps and book-keeping logic around [timesteps](#parameter-timesteps) 
+and [extinction gaps](#parameter-extinction-gap), trigggering invoking 
+[extinction](#method-extinctiongrid) when required. 
+
+This function invokes the [SimEngine](#simengine) to perform [diffusion](#function-diffusion) functions.
+
+
+This function invokes [timeStep](#function-timestep) and 
+[extinctionTimestep](function-extinctiontimestep), and compiles their returned results
+to produce the output .csv results, and the simulation's .seed file.
+
+#### *Function: timeStep*
+Invokes the [SimEngine](#simenginepy) [binomialDraw](#function-binomialdraw) or 
+[productionBiasLimited](#function-productionbiaslimited) depending on the [model's](#class-model)
+[infinite resource](#paramater-infinite_resources) settings.
+
+Also invokes the [SimEngine](#simenginepy) to [tally results](#function-tallyresults), returning
+results to [main](#function-main).
+
+#### *Function: extinctionTimeStep*
+Performs a non-generative timestep where an extinction has happened.
+
+Similar to [timeStep](#function-timestep), invokes the [SimEngine](#simenginepy) to 
+[tally results](#function-tallyresults), returning results to [main](#function-main).
 
 ## SimEngine.py
 Handles core functionalities and computations for the simulation.

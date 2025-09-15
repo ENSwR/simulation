@@ -143,7 +143,7 @@ Similar to [timeStep](#function-timestep), invokes the [SimEngine](#simenginepy)
 ## SimEngine.py
 Handles core functionalities and computations for the simulation.
 
-#### *Function: productionBiasLimited</ins>*
+#### *<ins>Function: productionBiasLimited</ins>*
 Responsible for calculating how many of each [Particle](#class-particle) 
 species is produced by the environment in a timestep when infinite resources
 are **enabled** using Appendix Equation 1 (Papale et al. 2025).

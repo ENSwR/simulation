@@ -4,9 +4,9 @@ et al. (2025) depicted in Figure A1. Files, classes and important methods,
 functions,and parameters are described below.
 
 ### Table of Contents
-- [run_sim.py](#run_simpy)
-- [Dials.py](#dialspy)
-    * [Class: Model](#class-model)
+* [run_sim.py](#run_simpy)
+* [Dials.py](#dialspy)
+    - [Class: Model](#class-model)
         + [Parameter: species_X](#parameter-species_x)
         + [Parameter: output_file](#parameter-output_file)
         + [Parameter: timesteps](#parameter-timesteps)
@@ -16,13 +16,13 @@ functions,and parameters are described below.
         + [Parameter: diffusion](#parameter-diffusion)
         + [Parameter: infinite_resources](#parameter-infinite_resources)
         + [Parameter: seed](#parameter-seed)
-- [sim.py](#simpy)
-- [SimEngine.py](#simenginepy)
-- [Environment.py](#environmentpy)
-    * [Class: GridCell](#class-gridcell)
-    * [Class: Grid](#class-grid)
-- [Population.py](#populationpy)
-    * [Class: Particle](#class-particle)
+* [sim.py](#simpy)
+* [SimEngine.py](#simenginepy)
+* [Environment.py](#environmentpy)
+    - [Class: GridCell](#class-gridcell)
+    - [Class: Grid](#class-grid)
+* [Population.py](#populationpy)
+    - [Class: Particle](#class-particle)
 
 ## run_sim.py
 Initial launch point for the simulation.

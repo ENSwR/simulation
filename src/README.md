@@ -1,6 +1,6 @@
 # Overview
 The src directory contains the source code for the ENSwR simulation used in Papale 
-et al. (2025) depicted in Figure A1. Files, classesm and important methods, 
+et al. (2025) depicted in Figure A1. Files, classes and important methods, 
 functions,and parameters are described below.
 
 ### Table of Contents

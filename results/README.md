@@ -1,4 +1,4 @@
-# Results
+# **Overview**
 This directory contains simulation outputs for the simulations used in
 Papale et al. (2025). Files are named for the figure data and configuration file
 they correspond to.

@@ -16,9 +16,9 @@ functions,and parameters are described below.
         + [Parameter: diffusion](#parameter-diffusion)
         + [Parameter: infinite_resources](#parameter-infinite_resources)
         + [Parameter: seed](#parameter-seed)
-* [sim.py](#simpy)
-        + [Function: main](#function-main)
-        + [Function: timeStep](#function-timestep)
+* [sim.py](#simpy)<br\>
+        + [Function: main](#function-main)<br\>
+        + [Function: timeStep](#function-timestep)<br\>
         + [Function: extinctionTimeStep](#function-extinctiontimestep)
 * [SimEngine.py](#simenginepy)
 * [Environment.py](#environmentpy)

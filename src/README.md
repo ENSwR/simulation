@@ -76,35 +76,35 @@ the simulation.
 See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs) 
 for additional details about parameters.
 
-#### *Parameter: species_X*
+#### *<ins>Parameter: species_X</ins>*
 Species and their associated settings are stored as dictionaries with their
 attributes as keys with associated values.
 
-#### *Parameter: output_file*
+#### *<ins>Parameter: output_file</ins>*
 Filepath as a string to direct output for results .csv and .seed files.
 
-#### *Parameter: timesteps*
+#### *<ins>Parameter: timesteps</ins>*
 Integer value for how many timesteps the simulation will run.
 
-#### *Parameter: extinction_gap*
+#### *<ins>Parameter: extinction_gap</ins>*
 Integer value for how many timesteps will occur in between extinction timesteps.
 
-#### *Parameter: env_x/y*
+#### *<ins>Parameter: env_x/y</ins>*
 Integer value for dimensions of the environment dimensions in units of 
 [GridCells](#class-gridcell). 
 
-#### *Parameter: decay*
+#### *<ins>Parameter: decay</ins>*
 Boolean (True/False) setting to enable/disable decay of particles in the model.
 
-#### *Parameter: diffusion*
+#### *<ins>Parameter: diffusion</ins>*
 Boolean (True/False) setting to enable/disable diffusion of particles in the model.
 
-#### *Parameter: infinite_resources*
+#### *<ins>Parameter: infinite_resources</ins>*
 Boolean (True/False) setting to enable/disable infinite resources in the model.
-If True, model populations will grow using [productionBiasLimited](#method-productionbiaslimited).
-If False, model populations will grow using [binomialDraw](#method-binomialdraw).
+If True, model populations will grow using [productionBiasLimited](#function-productionbiaslimited).
+If False, model populations will grow using [binomialDraw](#function-binomialdraw).
 
-#### *Parameter: seed*
+#### *<ins>Parameter: seed</ins>*
 Integer value to set seed value for pseudo-randomly generating numbers.
 
 ## sim.py
@@ -112,7 +112,7 @@ Handles parsing of configuration file to initialize [Model](#class-model) and
 [Environment](#environmentpy). Coordinates logistics of moving through timesteps and
 produces output results.
 
-#### *Function: main*
+#### *<ins>Function: main</ins>*
 
 The [main](#function-main) function is responsible for parsing the [Model](#class-model)
 and initializing the [Environment](#environmentpy). This method drives the simulation
@@ -126,7 +126,7 @@ This function invokes [timeStep](#function-timestep) and
 [extinctionTimestep](function-extinctiontimestep), and compiles their returned results
 to produce the output .csv results, and the simulation's .seed file.
 
-#### *Function: timeStep*
+#### *<ins>Function: timeStep</ins>*
 Invokes the [SimEngine](#simenginepy) [binomialDraw](#function-binomialdraw) or 
 [productionBiasLimited](#function-productionbiaslimited) depending on the [model's](#class-model)
 [infinite resource](#paramater-infinite_resources) settings.
@@ -134,7 +134,7 @@ Invokes the [SimEngine](#simenginepy) [binomialDraw](#function-binomialdraw) or
 Also invokes the [SimEngine](#simenginepy) to [tally results](#function-tallyresults), returning
 results to [main](#function-main).
 
-#### *Function: extinctionTimeStep*
+#### *<ins>Function: extinctionTimeStep</ins>*
 Performs a non-generative timestep where an extinction has happened.
 
 Similar to [timeStep](#function-timestep), invokes the [SimEngine](#simenginepy) to 
@@ -143,7 +143,7 @@ Similar to [timeStep](#function-timestep), invokes the [SimEngine](#simenginepy)
 ## SimEngine.py
 Handles core functionalities and computations for the simulation.
 
-#### *Function: productionBiasLimited*
+#### *Function: productionBiasLimited</ins>*
 Responsible for calculating how many of each [Particle](#class-particle) 
 species is produced by the environment in a timestep when infinite resources
 are **enabled** using Appendix Equation 1 (Papale et al. 2025).
@@ -152,7 +152,7 @@ are **enabled** using Appendix Equation 1 (Papale et al. 2025).
 <img width="534" height="44" alt="image" src="https://github.com/user-attachments/assets/bbba8370-1c82-4dd5-9c65-37361a192d29" />
 </p>
 
-#### *Function: binomialDraw*
+#### *<ins>Function: binomialDraw</ins>*
 Responsible for calculating how many of each [Particle](#class-particle) 
 species is produced by the environment in a timestep when infinite resources
 are **disabled** using Appendix Equation 2 (Papale et al. 2025).
@@ -161,19 +161,19 @@ are **disabled** using Appendix Equation 2 (Papale et al. 2025).
 <img width="579" height="129" alt="image" src="https://github.com/user-attachments/assets/1e979517-5a97-485a-b18d-ae799ddf15f0" />
 </p>
 
-#### *Function: createResourceDoses*
+#### *<ins>Function: createResourceDoses</ins>*
 Invokes [resourceDosesInflux](#method-resourcedosesinflux).
 
-#### *Function: decay*
+#### *<ins>Function: decay</ins>*
 Handles back-end logic for implementing decay functionality on populations
 and invokes Particles to [decay](#method-decay).
 
-#### *Function: diffusion*
+#### *<ins>Function: diffusion</ins>*
 Handles logic for diffusion processes. Receives Particle coordinates, performs
 bound-checks, and passes new coordinates to environment to [add individuals](#method-growpopulation) 
 to a new population and [remove them](#method-remove) from the old population.
 
-#### *Function: tallyResults*
+#### *<ins>Function: tallyResults</ins>*
 Counts [GridCell](#class-gridcell) populations and niche property data 
 to return to [sim](#simpy) (**tallyResults**).
 
@@ -185,26 +185,26 @@ Represents an environment of *n*x*m* micro-environments. Contains the
 Represents a micro-environment. This class stores [niche properties](#parameter-niche_x), 
 [available resources](#parameter-resource_doses), and its [population](#parameter-population).
 
-#### *Parameter: niche_X*
+#### *<ins>Parameter: niche_X</ins>*
 Float value for the accumulating niche property of a given species *X*
 
-#### *Parameter: resource_doses*
+#### *<ins>Parameter: resource_doses</ins>*
 Integer value for the number of resource doses remaining in a [microenvironment](#class-gridcell)
 under resource-limited models.
 
-#### *Parameter: population*
+#### *<ins>Parameter: population</ins>*
 A list containing [particle](#class-particle) instances representing a population.
 
-#### *Method: resourceDosesInflux*
+#### *<ins>Method: resourceDosesInflux</ins>*
 Replenishes [resources](#parameter-resource_doses) for the [microenvironment](#class-gridcell).
 
-#### *Method: growPopulation*
+#### *<ins>Method: growPopulation</ins>*
 Adds a new [particle](#class-particle) instance to the [population](#parameter-population) list.
 
-#### *Method: remove*
+#### *<ins>Method: remove</ins>*
 Removes a specific [particle](#class-particle) instance from the [population](#parameter-population) list.
 
-#### *Method: extinction (GridCell)*
+#### *<ins>Method: extinction (GridCell)</ins>*
 Handles logic for rare extinction survival if [diffusion](#parameter-diffusion) is enabled.
 
 Otherwise, replaces its [population](#parameter-population) with an empty list.
@@ -212,13 +212,13 @@ Otherwise, replaces its [population](#parameter-population) with an empty list.
 ### Class: Grid
 Represents the environment as a collection of [GridCells](#class-gridcell).
 
-#### *Parameter: landcsape*
+#### *<ins>Parameter: landcsape</ins>*
 *n*x*m* numpy array of [GridCell](#class-gridcell) objects
 
-#### *Method: initializeLandscape*
+#### *<ins>Method: initializeLandscape</ins>*
 Creates the *n*x*m* array of [GricCells](#class-gridcell).
 
-#### *Method: extinction (Grid)*
+#### *Method: extinction (Grid)</ins>*
 Invokes [extinction](#method-extinction-gridcell) in each [GridCell](#class-gridcell) of
 the [landscape](#parameter-landscape).
 
@@ -228,28 +228,28 @@ Contains the [Particle](#class-particle) class.
 ### Class: Particle
 Each instance of this class represents an individual particle.
 
-#### *Parameter: species*
+#### *<ins>Parameter: species</ins>*
 Character variable which denotes which species the individual belongs to.
 
-#### *Parameter: X_niche_construction*
+#### *<ins>Parameter: X_niche_construction</ins>*
 Integer value representing the niche construction ability of a denoted species *X*
 
-#### *Parameter: lifespan*
+#### *<ins>Parameter: lifespan</ins>*
 Integer value which stores the remaining timesteps for a particle to persist in the
 simulation if [decay](#parameter-decay) is enabled.
 
-#### *Parameter: production_bias*
+#### *<ins>Parameter: production_bias</ins>*
 Integer value representing strength of inherent bias for a denoted species *X* to be produced.
 
-#### *Parameter: diffused*
+#### *<ins>Parameter: diffused</ins>*
 Boolean (True/False) variable which flags when a particle has survive an extinction and diffused
 in [diffusion](#parameter-diffusion) enabled models. This prevents particles from diffusing
 more than once if they land in a new [GridCell](#class-gridcell) where extinction/diffusion has 
 not yet been calculted for the timestep.
 
-#### *Method: decay*
+#### *<ins>Method: decay</ins>*
 Reduces the individual's [lifespan](#parameter-lifespan) by 1.
 
-#### *Method: diffuse*
+#### *<ins>Method: diffuse</ins>*
 Reports a random direction of diffusion to the [diffusion function of the SimEngine](#function-diffusion)
 

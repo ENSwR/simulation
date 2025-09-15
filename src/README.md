@@ -4,6 +4,7 @@ et al. (2025) depicted in Figure A1. Files, classes and important methods,
 functions,and parameters are described below.
 
 ### Table of Contents
+* [Software Map](#softwaremap)
 * [run_sim.py](#run_simpy)
 * [Dials.py](#dialspy)
     - [Class: Model](#class-model)
@@ -16,7 +17,7 @@ functions,and parameters are described below.
         + [Parameter: diffusion](#parameter-diffusion)
         + [Parameter: infinite_resources](#parameter-infinite_resources)
         + [Parameter: seed](#parameter-seed)
-* [sim.py](#simpy)<br\>
+* [sim.py](#simpy)
     + [Function: main](#function-main)
     + [Function: timeStep](#function-timestep)
     + [Function: extinctionTimeStep](#function-extinctiontimestep)
@@ -26,6 +27,11 @@ functions,and parameters are described below.
     - [Class: Grid](#class-grid)
 * [Population.py](#populationpy)
     - [Class: Particle](#class-particle)
+
+# Software Map
+<img width="592" height="566" alt="image" src="https://github.com/user-attachments/assets/61d7f3bf-5569-455b-b518-d9f6c05cdd67" />
+
+
 
 ## run_sim.py
 Initial launch point for the simulation.
@@ -112,10 +118,20 @@ Similar to [timeStep](#function-timestep), invokes the [SimEngine](#simenginepy)
 ## SimEngine.py
 Handles core functionalities and computations for the simulation.
 
+#### *Function: productionBiasLimited
 Responsible for calculating how many of each [Particle](#class-particle) 
-species is produced by the environment in a timestep 
-(**productionBiasLimited** for infinite resource simulations and 
-**binomialDraw** for limited resource simulations).
+species is produced by the environment in a timestep when infinite resources
+are **enabled** using Appendix Equation 1 (Papale et al 2025).
+<img width="534" height="44" alt="image" src="https://github.com/user-attachments/assets/bbba8370-1c82-4dd5-9c65-37361a192d29" />
+
+#### *Function: binomialDraw
+Responsible for calculating how many of each [Particle](#class-particle) 
+species is produced by the environment in a timestep when infinite resources
+are **disabled** using Appendix Equation 2 (Papale et al 2025).
+
+<img width="579" height="129" alt="image" src="https://github.com/user-attachments/assets/1e979517-5a97-485a-b18d-ae799ddf15f0" />
+
+
 
 Invokes the [Environment](#environmentpy) to replenish resources 
 (**createResourceDoses**).

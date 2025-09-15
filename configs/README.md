@@ -146,7 +146,7 @@ niche effects are calculated, as described in the appendix Equation 1 of Papale 
 <img width="534" height="44" alt="image" src="https://github.com/user-attachments/assets/bbba8370-1c82-4dd5-9c65-37361a192d29" />
 </p>
 
-See [productionBiasLimited](#https://github.com/ENSwR/simulation/tree/main/src#function-productionbiaslimited)
+See [productionBiasLimited](https://github.com/ENSwR/simulation/tree/main/src#function-productionbiaslimited)
 for more details
 
 **[infinite_resources](#infinite_resources) = False**
@@ -157,7 +157,7 @@ in the appendix Equation 2 of Papale et al. (2025).
 <img width="579" height="129" alt="image" src="https://github.com/user-attachments/assets/1e979517-5a97-485a-b18d-ae799ddf15f0" />
 </p>
 
-See [binomialDraw](#https://github.com/ENSwR/simulation/tree/main/src#function-binomialdraw)
+See [binomialDraw](https://github.com/ENSwR/simulation/tree/main/src#function-binomialdraw)
 for more details
 
 # Template

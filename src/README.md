@@ -17,9 +17,9 @@ functions,and parameters are described below.
         + [Parameter: infinite_resources](#parameter-infinite_resources)
         + [Parameter: seed](#parameter-seed)
 * [sim.py](#simpy)<br\>
-        + [Function: main](#function-main)
-        + [Function: timeStep](#function-timestep)
-        + [Function: extinctionTimeStep](#function-extinctiontimestep)
+    + [Function: main](#function-main)
+    + [Function: timeStep](#function-timestep)
+    + [Function: extinctionTimeStep](#function-extinctiontimestep)
 * [SimEngine.py](#simenginepy)
 * [Environment.py](#environmentpy)
     - [Class: GridCell](#class-gridcell)

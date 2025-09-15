@@ -1,7 +1,7 @@
 # Overview
 The src directory contains the source code for the ENSwR simulation used in Papale 
-et al. (2025) depicted in Figure A1. Important class methods are given in bold 
-parentheses, while important parameters are given in italicized parantheses.
+et al. (2025) depicted in Figure A1. Files, classesm and important methods, 
+functions,and parameters are described below.
 
 ### Table of Contents
 1. [run_sim.py](#run_simpy)

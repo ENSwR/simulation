@@ -7,7 +7,7 @@ parentheses, while important parameters are given in italicized parantheses.
 Initial launch point for the simulation.
 
 This script is responsible for parsing the configuration file and 
-initializing the [Model](#class:-model). The initialized [Model](#class:-model) 
+initializing the [Model](#class-model). The initialized [Model](#class:-model) 
 instance is then passed to the [sim](#sim).
 
 ## Dials

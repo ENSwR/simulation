@@ -1,4 +1,4 @@
-# Overview
+# **Overview**
 The src directory contains the source code for the ENSwR simulation used in Papale 
 et al. (2025) depicted in Figure A1. Files, classes and important methods, 
 functions,and parameters are described below.
@@ -41,35 +41,35 @@ the simulation.
 See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs) 
 for additional details about parameters.
 
-#### Parameter: species_X
+#### *Parameter: species_X*
 Species and their associated settings are stored as dictionaries with their
 attributes as keys with associated values.
 
-#### Parameter: output_file
+#### *Parameter: output_file*
 Filepath as a string to direct output for results .csv and .seed files.
 
-#### Parameter: timesteps
+#### *Parameter: timesteps*
 Integer value for how many timesteps the simulation will run.
 
-#### Parameter: extinction_gap
+#### *Parameter: extinction_gap*
 Integer value for how many timesteps will occur in between extinction timesteps.
 
-#### Parameter: env_x/y
+#### *Parameter: env_x/y*
 Integer value for dimensions of the environment dimensions in units of 
 [GridCells](#class-gridcell). 
 
-#### Parameter: decay
+#### *Parameter: decay*
 Boolean (True/False) setting to enable/disable decay of particles in the model.
 
-#### Parameter: diffusion
+#### *Parameter: diffusion*
 Boolean (True/False) setting to enable/disable diffusion of particles in the model.
 
-#### Parameter: infinite_resources
+#### *Parameter: infinite_resources*
 Boolean (True/False) setting to enable/disable infinite resources in the model.
 If True, model populations will grow using [productionBiasLimited](#method-productionbiaslimited).
 If False, model populations will grow using [binomialDraw](#method-binomialdraw).
 
-#### Parameter: seed
+#### *Parameter: seed*
 Integer value to set seed value for pseudo-randomly generating numbers.
 
 ## sim.py

@@ -7,6 +7,15 @@ functions,and parameters are described below.
 1. [run_sim.py](#run_simpy)
 2. [Dials.py](#dialspy)
     * [Class: Model](#class-model)
+        + [Parameter: species_X](#parameter-speciesx)
+        + [Parameter: output_file](#parameter-outputfile)
+        + [Parameter: timesteps](#parameter-timesteps)
+        + [Parameter: extinction_gap](#parameter-extinctiongap)
+        + [Parameter: env_x/y](#parameter-envxy)
+        + [Parameter: decay](#parameter-decay)
+        + [Parameter: diffusion](#parameter-diffusion)
+        + [Parameter: infinite_resources](#parameter-infiniteresources)
+        + [Parameter: seed](#parameter-seed)
 3. [sim.py](#simpy)
 4. [SimEngine.py](#simenginepy)
 5. [Environment.py](#environmentpy)
@@ -27,10 +36,41 @@ Contains the [Model](#class-model) Class.
 
 ### Class: Model
 This class defines the model details and associated parameters and settings for
-the simulation (*output_file*, *timesteps*, *extinction_gap*, *env_x*, *env_y*,
-*decay*, *diffusion*, *infinite_resources*, *seed*) and each species 
-(*species_X*). Species are stored as dictionaries where each of their parameters 
-are a key with an associated value.
+the simulation. 
+
+See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs) 
+for additional details about parameters.
+
+#### Parameter: species_X
+Species and their associated settings are stored as dictionaries with their
+attributes as keys with associated values.
+
+#### Parameter: output_file
+Filepath as a string to direct output for results .csv and .seed files.
+
+#### Parameter: timesteps
+Integer value for how many timesteps the simulation will run.
+
+#### Parameter: extinction_gap
+Integer value for how many timesteps will occur in between extinction timesteps.
+
+#### Parameter: env_x/y
+Integer value for dimensions of the environment dimensions in units of 
+[GridCells](#class-gridcell). 
+
+#### Parameter: decay
+Boolean (True/False) setting to enable/disable decay of particles in the model.
+
+#### Parameter: diffusion
+Boolean (True/False) setting to enable/disable diffusion of particles in the model.
+
+#### Parameter: infinite_resources
+Boolean (True/False) setting to enable/disable infinite resources in the model.
+If True, model populations will grow using [productionBiasLimited](#method-productionbiaslimited).
+If False, model populations will grow using [binomialDraw](#method-binomialdraw).
+
+#### Parameter: seed
+Integer value to set seed value for pseudo-randomly generating numbers.
 
 ## sim.py
 The main method (**main**) is responsible for parsing the [Model](#class-model)

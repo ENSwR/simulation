@@ -155,7 +155,8 @@ are **enabled** using Appendix Equation 1 (Papale et al. 2025).
 #### *<ins>Function: binomialDraw</ins>*
 Responsible for calculating how many of each [Particle](#class-particle) 
 species is produced by the environment in a timestep when infinite resources
-are **disabled** using Appendix Equation 2 (Papale et al. 2025).
+are **disabled** using Bernoulli trials with probabilities deteremined by
+Appendix Equation 2 (Papale et al. 2025).
 
 <p align="center">
 <img width="579" height="129" alt="image" src="https://github.com/user-attachments/assets/1e979517-5a97-485a-b18d-ae799ddf15f0" />

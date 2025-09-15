@@ -11,18 +11,18 @@ Comma Separated Value files with a header row.
 
 The first column (unnamed) contains the timestep.
 
-### <ins>Extinctions</ins>
+#### <ins>Extinctions</ins>
 The number of previous extinctions which have occurred in the simulation.
 
-### <ins>Tot_Pop(_X)</ins>
+#### <ins>Tot_Pop(_X)</ins>
 A population tally combined across all GridCells of total populations, or 
 specific speciespopulations, as indicated under the corresponding column headers.
 
-### <ins>Pop(_X)</ins>
+#### <ins>Pop(_X)</ins>
 Population tallies of each GridCell for all species populations, or specific 
 species populations.
 
-### <ins>niche_X</ins>
+#### <ins>niche_X</ins>
 Niche property tallies of each GridCell for a given species.
 
 ## .seed

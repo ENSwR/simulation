@@ -234,12 +234,21 @@ Character variable which denotes which species the individual belongs to.
 #### *<ins>Parameter: X_niche_construction</ins>*
 Integer value representing the niche construction ability of a denoted species *X*
 
+See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs#x_niche_construction-required) 
+for additional details about this parameters
+
 #### *<ins>Parameter: lifespan</ins>*
 Integer value which stores the remaining timesteps for a particle to persist in the
 simulation if [decay](#parameter-decay) is enabled.
 
+See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs##lifespan-required-for-decay) 
+for additional details about this parameters
+
 #### *<ins>Parameter: production_bias</ins>*
 Integer value representing strength of inherent bias for a denoted species *X* to be produced.
+
+See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs#production_bias-required) 
+for additional details about this parameters
 
 #### *<ins>Parameter: diffused</ins>*
 Boolean (True/False) variable which flags when a particle has survive an extinction and diffused

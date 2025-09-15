@@ -22,6 +22,12 @@ functions,and parameters are described below.
     + [Function: timeStep](#function-timestep)
     + [Function: extinctionTimeStep](#function-extinctiontimestep)
 * [SimEngine.py](#simenginepy)
+    + [Function: productionBiasLimited](#function-productionbiaslimited)
+    + [Function: binomialDraw](#function-binomialdraw)
+    + [Function: createResourceDoses](#function-createresourcedoses)
+    + [Function: decay](#function-decay)
+    + [Function: diffusion](#function-diffusion)
+    + [Function: tallyResults](#function-tallyresults)
 * [Environment.py](#environmentpy)
     - [Class: GridCell](#class-gridcell)
     - [Class: Grid](#class-grid)
@@ -33,7 +39,7 @@ Figure A1 (Papale et al. 2025).
 
 <p align="center">
     <img width="592" height="566" alt="image" src="https://github.com/user-attachments/assets/61d7f3bf-5569-455b-b518-d9f6c05cdd67" />
-</p>>
+</p>
 
 
 ## run_sim.py
@@ -99,7 +105,6 @@ and [extinction gaps](#parameter-extinction-gap), trigggering invoking
 
 This function invokes the [SimEngine](#simengine) to perform [diffusion](#function-diffusion) functions.
 
-
 This function invokes [timeStep](#function-timestep) and 
 [extinctionTimestep](function-extinctiontimestep), and compiles their returned results
 to produce the output .csv results, and the simulation's .seed file.
@@ -121,53 +126,84 @@ Similar to [timeStep](#function-timestep), invokes the [SimEngine](#simenginepy)
 ## SimEngine.py
 Handles core functionalities and computations for the simulation.
 
-#### *Function: productionBiasLimited
+#### *Function: productionBiasLimited*
 Responsible for calculating how many of each [Particle](#class-particle) 
 species is produced by the environment in a timestep when infinite resources
 are **enabled** using Appendix Equation 1 (Papale et al. 2025).
-<img width="534" height="44" alt="image" src="https://github.com/user-attachments/assets/bbba8370-1c82-4dd5-9c65-37361a192d29" />
 
-#### *Function: binomialDraw
+<p align="center">
+<img width="534" height="44" alt="image" src="https://github.com/user-attachments/assets/bbba8370-1c82-4dd5-9c65-37361a192d29" />
+</p>
+
+#### *Function: binomialDraw*
 Responsible for calculating how many of each [Particle](#class-particle) 
 species is produced by the environment in a timestep when infinite resources
 are **disabled** using Appendix Equation 2 (Papale et al. 2025).
 
+<p align="center">
 <img width="579" height="129" alt="image" src="https://github.com/user-attachments/assets/1e979517-5a97-485a-b18d-ae799ddf15f0" />
+</p>
 
+#### *Function: createResourceDoses*
+Invokes [resourceDosesInflux](#method-resourcedosesinflux).
 
+#### *Function: decay*
+Handles back-end logic for implementing decay functionality on populations
+and invokes Particles to [decay](#method-decay).
 
-Invokes the [Environment](#environmentpy) to replenish resources 
-(**createResourceDoses**).
+#### *Function: diffusion*
+Handles logic for diffusion processes. Receives Particle coordinates, performs
+bound-checks, and passes new coordinates to environment to [add individuals](#method-growpopulation) 
+to a new population and [remove them](#method-remove) from the old population.
 
-Invokes Particles to decay (**decay**).
-
-Handles logic for diffusion processes 
-(**diffusion** and **resetDiffusionStatus**).
-
-Counts populations and fetches niche property data from 
-[Environment](#environmentpy) to return to [sim](#simpy) (**tallyResults**).
+#### *Function: tallyResults*
+Counts [GridCell](#class-gridcell) populations and niche property data 
+to return to [sim](#simpy) (**tallyResults**).
 
 ## Environment.py
 Represents an environment of *n*x*m* micro-environments. Contains the 
 [Grid](#class-grid) and [GridCell](#class-gridcell) classes.
 
 ### Class: GridCell
-Represents a micro-environment. This class stores niche properties (*niche_X*), 
-available resources (*resource_doses*), and stores its population as a list 
-(*population*) of [Particle](#class-particle) object instances.
+Represents a micro-environment. This class stores [niche properties](#parameter-niche_x), 
+[available resources](#parameter-resource_doses), and its [population](#parameter-population).
 
-This class is responsible for replenishing resources (**resourceDosesInflux**), 
-adding new [Particles](#class-particle) to its population (**growPopulation**), 
-removing [Particles](#class-particle) from population (**remove**), and 
-inflicting extinctions on its population (**extinction**).
+#### *Parameter: niche_X*
+Float value for the accumulating niche property of a given species *X*
+
+#### *Parameter: resource_doses*
+Integer value for the number of resource doses remaining in a [microenvironment](#class-gridcell)
+under resource-limited models.
+
+#### *Parameter: population*
+A list containing [particle](#class-particle) instances representing a population.
+
+#### *Method: resourceDosesInflux*
+Replenishes [resources](#parameter-resource_doses) for the [microenvironment](#class-gridcell).
+
+#### *Method: growPopulation*
+Adds a new [particle](#class-particle) instance to the [population](#parameter-population) list.
+
+#### *Method: remove*
+Removes a specific [particle](#class-particle) instance from the [population](#parameter-population) list.
+
+#### *Method: extinction (GridCell)*
+Handles logic for rare extinction survival if [diffusion](#parameter-diffusion) is enabled.
+
+Otherwise, replaces its [population](#parameter-population) with an empty list.
 
 ### Class: Grid
 Represents the environment as a collection of [GridCells](#class-gridcell).
 
-This class creates the environment by initializing an array of 
-[GridCell](#class-gridcell) objects (**initializeLandscape**). It is also 
-responsible for performing mass-extinctions (**extinction**) by invoking the 
-extinction method of the [GridCells](#class-gridcell) in its array.
+#### *Parameter: landcsape*
+*n*x*m* numpy array of [GridCell](#class-gridcell) objects
+
+#### *Method: initializeLandscape*
+Creates the *n*x*m* array of [GricCells](#class-gridcell).
+
+#### *Method: extinction (Grid)*
+Invokes [extinction](#method-extinction-gridcell) in each [GridCell](#class-gridcell) of
+the [landscape](#parameter-landscape).
 
 ## Population.py
 Contains the [Particle](#class-particle) class. 

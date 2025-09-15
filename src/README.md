@@ -30,9 +30,26 @@ functions,and parameters are described below.
     + [Function: tallyResults](#function-tallyresults)
 * [Environment.py](#environmentpy)
     - [Class: GridCell](#class-gridcell)
+        + [Parameter: niche_X](#parameter-niche_x)
+        + [Parameter: resource_doses](#parameter-resource_doses)
+        + [Parameter: population](#parameter-population)
+        + [Method: resourceDosesInflux](#method-resourcedosesinflux)
+        + [Method: growPopulation](#method-growpopulation)
+        + [Method: remove](#method-remove)
+        + [Method: extinction](#method-extinction-gridcell)
     - [Class: Grid](#class-grid)
+        + [Parameter: landcsape](#parameter-landscape)
+        + [Method: initializeLandscape](#method-initializelandscape)
+        + [Method: extinction](#method-extinction-grid)
 * [Population.py](#populationpy)
     - [Class: Particle](#class-particle)
+        + [Parameter: species](#parameter-species)
+        + [Parameter: X_niche_construction](#parameter-X_niche_construction)
+        + [Parameter: lifespan](#parameter-lifespan)
+        + [Parameter: production_bias](#parameter-production_bias)
+        + [Parameter: diffused](#parameter-diffused)
+        + [Method: decay](#method-decay)
+        + [Method: diffuse](#method-diffuse)
 
 # Software Map
 Figure A1 (Papale et al. 2025).
@@ -211,11 +228,28 @@ Contains the [Particle](#class-particle) class.
 ### Class: Particle
 Each instance of this class represents an individual particle.
 
-Particles have a species (*species*), niche construction effect 
-(*X_niche_construction*), remaining lifespan (*lifespan*) for decay models,
-production bias (*production_bias*), and a boolean flag to signal if a particle
-has diffused during a timestep for diffusion models (*diffused*).
+#### *Parameter: species*
+Character variable which denotes which species the individual belongs to.
 
-Particles are responsible for decaying (**decay**) and reporting their movement
-to the [SimEngine](#simenginepy) during a diffusion event (**diffuse**).
+#### *Parameter: X_niche_construction*
+Integer value representing the niche construction ability of a denoted species *X*
+
+#### *Parameter: lifespan*
+Integer value which stores the remaining timesteps for a particle to persist in the
+simulation if [decay](#parameter-decay) is enabled.
+
+#### *Parameter: production_bias*
+Integer value representing strength of inherent bias for a denoted species *X* to be produced.
+
+#### *Parameter: diffused*
+Boolean (True/False) variable which flags when a particle has survive an extinction and diffused
+in [diffusion](#parameter-diffusion) enabled models. This prevents particles from diffusing
+more than once if they land in a new [GridCell](#class-gridcell) where extinction/diffusion has 
+not yet been calculted for the timestep.
+
+#### *Method: decay*
+Reduces the individual's [lifespan](#parameter-lifespan) by 1.
+
+#### *Method: diffuse*
+Reports a random direction of diffusion to the [diffusion function of the SimEngine](#function-diffusion)
 

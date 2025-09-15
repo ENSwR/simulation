@@ -7,7 +7,7 @@ The order of the parameters is not important, but parameters must be set
 under their correct headings (eg. [Dials]). Parameters which are not included
 will take on default values.
 
-##### Table of Contents
+### Table of Contents
 * [Dials](#dials)
     + [seed](#seed)
     + [timesteps](#timesteps)

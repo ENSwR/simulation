@@ -29,9 +29,11 @@ functions,and parameters are described below.
     - [Class: Particle](#class-particle)
 
 # Software Map
-Figure 1A (Papale et al. 2025).
-<img width="592" height="566" alt="image" src="https://github.com/user-attachments/assets/61d7f3bf-5569-455b-b518-d9f6c05cdd67" />
+Figure A1 (Papale et al. 2025).
 
+<p align="center">
+    <img width="592" height="566" alt="image" src="https://github.com/user-attachments/assets/61d7f3bf-5569-455b-b518-d9f6c05cdd67" />
+</p>>
 
 
 ## run_sim.py

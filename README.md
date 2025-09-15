@@ -78,7 +78,7 @@ the resulting .csv is being created.
 
 ## Requirements.txt
 Contains the packages and versions info required to run the simulation. This 
-filewas used to install dependencies for the virtual environment [venv](#venv)
+file was used to install dependencies for the virtual environment [venv](#venv)
 
 
 [![DOI](https://zenodo.org/badge/1054276078.svg)](https://doi.org/10.5281/zenodo.17106872)

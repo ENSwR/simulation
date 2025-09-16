@@ -14,27 +14,7 @@ the config file. The seed number and a timestamp will be appended to a .seed fil
 with the same name.
 
 # Running the Simulation
-It is recommended to run this simulation using the included virtual environment 
-for Python, which has all dependencies pre-installed.
-
-Files associated with this virtual environment are found in the [venv](#venv) directory.
-
-To run this simulation:
-
-1. [Activate the virtual environment](#activating-the-virtual-environment)
-2. [Run simulation with a config file](#running-simulation-with-config-file)
-3. Result output paths are set by the config files. In the provided configs,
-resulting output will be sent to the [results](#results) directory.
-
-## Activating the virtual environment
-### MacOS/Linux
-```
-source venv/bin/activate
-```
-### Windows (PowerShell)
-```
-venv\bin\Activate.ps1
-```
+PORTABILITY NEEDS REVISION
 
 # Running simulation with config file
 ```
@@ -43,10 +23,6 @@ python3 <path/to/run_sim.py> [path/to/config]
 Example:
 python3 src/run_sim.py configs/1a.config
 ```
-
-## venv
-The venv directory contains all files associated with a virtual environment
-for Python with all package requirements pre-installed to run the simulation.
 
 ## configs
 The configs directory holds ".config" files named for the figures' data they 
@@ -77,8 +53,7 @@ to run through each timestep. Expect a long wait after the final timestep while
 the resulting .csv is being created.
 
 ## Requirements.txt
-Contains the packages and versions info required to run the simulation. This 
-file was used to install dependencies for the virtual environment [venv](#venv)
+Contains the packages and versions info required to run the simulation.
 
 
 [![DOI](https://zenodo.org/badge/1054276078.svg)](https://doi.org/10.5281/zenodo.17106872)

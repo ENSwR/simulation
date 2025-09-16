@@ -96,11 +96,11 @@ The configs directory holds ".config" files named for the figures' data they
 produce.
 
 ### ./src
-The scr directory contains the source code for the simulation.
+The src directory contains the source code for the simulation.
 
 ### ./results
 The results directory is the output directory for the ".config" files found in 
-[configs](#configs). It contains '.csv' files, where the raw data from each 
+[./configs](#configs). It contains '.csv' files, where the raw data from each 
 simulation run gets stored, as well as associated '.seed' files which list a 
 history of seed values for previous runs.
 

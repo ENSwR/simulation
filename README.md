@@ -7,10 +7,10 @@ This repository hosts the ENSwR simulation used in Papale et al. (2025)
     + [Outputs](#outputs)
     + [Running the simulation](#running-the-simulation)
         1. [Navigate to the main directory](#navigate-to-the-main-directory)
-        2. [Create a virtual environment (venv) for Python](#create-a-virtual-environment-for-python)
-        3. [Activate the virtual environment](#activate-the-virtual-environment)
-        4. [Install requirements to the venv](#install-requirements-to-the-venv)
-        5. [Run the simulation with config file](#running-simulation-with-configuration-file)
+        1. [Create a virtual environment (venv) for Python](#create-a-virtual-environment-for-python)
+        1. [Activate the virtual environment](#activate-the-virtual-environment)
+        1. [Install requirements to the venv](#install-requirements-to-the-venv)
+        1. [Run the simulation with config file](#running-simulation-with-configuration-file)
 * [Directories](#directories)
     + [./configs](#configs)
     + [./src](#src)
@@ -33,10 +33,10 @@ with the same name.
 
 ### Running the Simulation
 1. [Navigate to the main directory](#navigate-to-the-main-directory)
-2. [Create a virtual environment (venv) for Python](#create-a-virtual-environment-for-python)
-3. [Activate the virtual environment](#activate-the-virtual-environment)
-4. [Install requirements to the venv](#install-requirements-to-the-venv)
-5. [Run the simulation with config file](#running-simulation-with-configuration-file)
+1. [Create a virtual environment (venv) for Python](#create-a-virtual-environment-for-python)
+1. [Activate the virtual environment](#activate-the-virtual-environment)
+1. [Install requirements to the venv](#install-requirements-to-the-venv)
+1. [Run the simulation with config file](#running-simulation-with-configuration-file)
 
 ### Navigate to the main directory
 Extract the compressed .zip or .tar.gz file. Note the name and location of the 

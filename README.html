@@ -352,17 +352,49 @@ display: none;
 </div>
 
 
-<div id="enswr-simulation" class="section level1">
-<h1>ENSwR Simulation</h1>
+<div id="overview" class="section level1">
+<h1><strong>Overview</strong></h1>
 <p>This repository hosts the ENSwR simulation used in Papale et
 al. (2025)</p>
-<div id="inputs" class="section level2">
-<h2>Inputs</h2>
+<div id="table-of-contents" class="section level3">
+<h3>Table of Contents</h3>
+<ul>
+<li><a href="#instructions">Instructions</a>
+<ul>
+<li><a href="#inputs">Inputs</a></li>
+<li><a href="#outputs">Outputs</a></li>
+<li><a href="#running-the-simulation">Running the simulation</a>
+<ul>
+<li><a href="#navigate-to-the-main-directory">Navigate to the main
+directory</a></li>
+<li><a href="#create-a-virtual-environment-for-python">Create a virtual
+environment (venv) for Python</a></li>
+<li><a href="#activate-the-virtual-environment">Activate the virtual
+environment</a></li>
+<li><a href="#install-requirements-to-the-venv">Install requirements to
+the venv</a></li>
+<li><a href="#running-simulation-with-configuration-file">Run the
+simulation with config file</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#directories">Directories</a>
+<ul>
+<li><a href="#configs">./configs</a></li>
+<li><a href="#src">./src</a></li>
+<li><a href="#results">./results</a></li>
+</ul></li>
+<li><a href="#requirementstxt">requirements.txt</a></li>
+</ul>
+</div>
+<div id="instructions" class="section level2">
+<h2>Instructions</h2>
+<div id="inputs" class="section level3">
+<h3>Inputs</h3>
 <p>This simulation requires a plain-text configuration file to be
 provided.</p>
 </div>
-<div id="outputs" class="section level2">
-<h2>Outputs</h2>
+<div id="outputs" class="section level3">
+<h3>Outputs</h3>
 <p>During runtime this simulation prints the actively running timestep
 to console. Upon completion, the simulation’s seed number will be
 printed to console. If the config file does not specify a seed, then the
@@ -371,77 +403,111 @@ seed will be randomly generated.</p>
 specified in the config file. The seed number and a timestamp will be
 appended to a .seed file with the same name.</p>
 </div>
-</div>
-<div id="running-the-simulation" class="section level1">
-<h1>Running the Simulation</h1>
-<p>It is recommended to run this simulation using the included virtual
-environment for Python, which has all dependencies pre-installed.</p>
-<p>Files associated with this virtual environment are found in the <a href="#venv">venv</a> directory.</p>
-<p>To run this simulation:</p>
+<div id="running-the-simulation" class="section level3">
+<h3>Running the Simulation</h3>
 <ol style="list-style-type: decimal">
-<li><a href="#activating-the-virtual-environment">Activate the virtual
+<li><a href="#navigate-to-the-main-directory">Navigate to the main
+directory</a></li>
+<li><a href="#create-a-virtual-environment-for-python">Create a virtual
+environment (venv) for Python</a></li>
+<li><a href="#activate-the-virtual-environment">Activate the virtual
 environment</a></li>
-<li><a href="#running-simulation-with-config-file">Run simulation with a
-config file</a></li>
-<li>Result output paths are set by the config files. In the provided
-configs, resulting output will be sent to the <a href="#results">results</a> directory.</li>
+<li><a href="#install-requirements-to-the-venv">Install requirements to
+the venv</a></li>
+<li><a href="#running-simulation-with-configuration-file">Run the
+simulation with config file</a></li>
 </ol>
-<div id="activating-the-virtual-environment" class="section level2">
-<h2>Activating the virtual environment</h2>
-<div id="macoslinux" class="section level3">
-<h3>MacOS/Linux</h3>
+</div>
+<div id="navigate-to-the-main-directory" class="section level3">
+<h3>Navigate to the main directory</h3>
+<p>Extract the compressed .zip or .tar.gz file. Note the name and
+location of the directory that is created.</p>
+<p>Using PowerShell (Windows) or a terminal (MacOS/Linux), navigate the
+working directory to the extracted directory that was created.</p>
+</div>
+<div id="create-a-virtual-environment-for-python" class="section level3">
+<h3>Create a virtual environment for python</h3>
+<p>In your terminal or PowerShell enter:</p>
+<pre><code>python3 -m venv venv</code></pre>
+<p>This will create a virtual environment directory called “venv” in the
+active folder.</p>
+</div>
+<div id="activate-the-virtual-environment" class="section level3">
+<h3>Activate the virtual environment</h3>
+<div id="windows" class="section level4">
+<h4>Windows</h4>
+<p>In PowerShell, enter:</p>
+<pre><code>venv\Scripts\Activate.ps1</code></pre>
+</div>
+<div id="macoslinux" class="section level4">
+<h4>MacOS/Linux</h4>
+<p>In the terminal, enter:</p>
 <pre><code>source venv/bin/activate</code></pre>
-</div>
-<div id="windows-powershell" class="section level3">
-<h3>Windows (PowerShell)</h3>
-<pre><code>venv\bin\Activate.ps1</code></pre>
+<p>You should now see the environment name in parentheses in your
+command line.</p>
 </div>
 </div>
+<div id="install-requirements-to-the-venv" class="section level3">
+<h3>Install requirements to the venv</h3>
+<p>With the venv now activated, enter:</p>
+<pre><code>pip3 install -r requirements.txt</code></pre>
+<p>This will begin installing dependencies listed in requirements.txt to
+the virtual environment. These installations will not persist outside of
+your virtual environment. This step will not need to be repeated if you
+activate the venv again in the future.</p>
 </div>
-<div id="running-simulation-with-config-file" class="section level1">
-<h1>Running simulation with config file</h1>
+<div id="running-simulation-with-configuration-file" class="section level3">
+<h3>Running simulation with configuration file</h3>
+<p>To run the simulation, ensure that the venv is active and
+dependencies have been installed, and envoke python3 to run the
+run_sim.py script:</p>
 <pre><code>python3 &lt;path/to/run_sim.py&gt; [path/to/config] 
 
 Example:
 python3 src/run_sim.py configs/1a.config</code></pre>
-<div id="venv" class="section level2">
-<h2>venv</h2>
-<p>The venv directory contains all files associated with a virtual
-environment for Python with all package requirements pre-installed to
-run the simulation.</p>
+<p>The console should begin outputting numbers indicating the timestep
+it is computing, followed by a seed value when the simulation has
+completed.</p>
+<p>Results will appear in <a href="#results">./results/</a>.</p>
 </div>
-<div id="configs" class="section level2">
-<h2>configs</h2>
+</div>
+<div id="directories" class="section level2">
+<h2>Directories</h2>
+<div id="configs" class="section level3">
+<h3>./configs</h3>
 <p>The configs directory holds “.config” files named for the figures’
 data they produce.</p>
 </div>
-<div id="src" class="section level2">
-<h2>src</h2>
+<div id="src" class="section level3">
+<h3>./src</h3>
 <p>The scr directory contains the source code for the simulation.</p>
 </div>
-<div id="results" class="section level2">
-<h2>results</h2>
+<div id="results" class="section level3">
+<h3>./results</h3>
 <p>The results directory is the output directory for the “.config” files
 found in <a href="#configs">configs</a>. It contains ‘.csv’ files, where
 the raw data from each simulation run gets stored, as well as associated
 ‘.seed’ files which list a history of seed values for previous runs.</p>
-<p>Results from the runs using the provided config files are already
-included, and can be reproduced again by running the simulation with the
-config files again.</p>
-<p><strong>Note:</strong> Results for simulation with 4.config are not
-included due to filesize. This simulation config runs 2,100,000
+<p>All simulation runs report a seed value, whether the value is set by
+the user in the configuration file, or whether the program generates its
+seed value at run-time.</p>
+<p>Results from the runs using the provided configuration files are
+already included, and can be reproduced again by running the simulation
+with the configuration files again.</p>
+<p><strong>Note:</strong> Results for simulation running 4.config are
+not included due to filesize. This simulation config runs 2,100,000
 timesteps on a 10x10 environment. The resulting .csv is approximately
-12GB. To obtain these results, please run the simulation using 4.config
-and allow considerable time for the simulation to run through each
-timestep. Expect a long wait after the final timestep while the
-resulting .csv is being created.</p>
+12GB. To obtain these results, run the simulation using 4.config and
+allow considerable time for the simulation to run through each timestep.
+Expect a long wait after the final timestep while the resulting .csv is
+being created.</p>
+</div>
 </div>
 <div id="requirements.txt" class="section level2">
-<h2>Requirements.txt</h2>
+<h2>requirements.txt</h2>
 <p>Contains the packages and versions info required to run the
-simulation. This file was used to install dependencies for the virtual
-environment <a href="#venv">venv</a></p>
-<p><a href="https://doi.org/10.5281/zenodo.17106872"><img role="img" aria-label="DOI" src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgICAgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJiIiB4Mj0iMCIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bWFzayBpZD0iYSIgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxOTAuODQzNzUiIGhlaWdodD0iMjAiIHJ4PSIzIgogICAgICAgICAgICBmaWxsPSIjZmZmIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxnIG1hc2s9InVybCgjYSkiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxLjM3NXYyMEgweiIgLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iIzAwN2VjNiIKICAgICAgICAgICAgZD0iTTMxLjM3NSAwaDE1OS40Njg3NXYyMEgzMS4zNzV6IgogICAgICAgICAgICAvPgogICAgICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDE5MC44NDM3NXYyMEgweiIgLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLAogICAgICAgIFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNSIgZmlsbD0iIzAxMDEwMSIKICAgICAgICAgICAgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNCI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxMTAuNjA5Mzc1IgogICAgICAgICAgICB5PSIxNSIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICAxMC41MjgxL3plbm9kby4xNzEwNjg3MwogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IHg9IjExMC42MDkzNzUiIHk9IjE0Ij4KICAgICAgICAgICAgICAgIDEwLjUyODEvemVub2RvLjE3MTA2ODczCiAgICAgICAgICAgIDwvdGV4dD4KICAgICAgICA8L2c+CiAgICA8L3N2Zz4=" alt="DOI" /></a></p>
+simulation.</p>
+<p><a href="https://doi.org/10.5281/zenodo.17106872"><img role="img" aria-label="DOI" src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgICAgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJiIiB4Mj0iMCIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bWFzayBpZD0iYSIgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxOTAuODQzNzUiIGhlaWdodD0iMjAiIHJ4PSIzIgogICAgICAgICAgICBmaWxsPSIjZmZmIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxnIG1hc2s9InVybCgjYSkiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxLjM3NXYyMEgweiIgLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iIzAwN2VjNiIKICAgICAgICAgICAgZD0iTTMxLjM3NSAwaDE1OS40Njg3NXYyMEgzMS4zNzV6IgogICAgICAgICAgICAvPgogICAgICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDE5MC44NDM3NXYyMEgweiIgLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLAogICAgICAgIFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNSIgZmlsbD0iIzAxMDEwMSIKICAgICAgICAgICAgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNCI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxMTAuNjA5Mzc1IgogICAgICAgICAgICB5PSIxNSIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICAxMC41MjgxL3plbm9kby4xNzEzNjE5NAogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IHg9IjExMC42MDkzNzUiIHk9IjE0Ij4KICAgICAgICAgICAgICAgIDEwLjUyODEvemVub2RvLjE3MTM2MTk0CiAgICAgICAgICAgIDwvdGV4dD4KICAgICAgICA8L2c+CiAgICA8L3N2Zz4=" alt="DOI" /></a></p>
 </div>
 </div>
 

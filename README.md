@@ -1,6 +1,8 @@
 # **Overview**
 This repository hosts the ENSwR simulation used in Papale et al. (2025)
 
+This simulation was written using Python 3.12.7
+
 ### Table of Contents
 - [Instructions](#instructions)
     * [Inputs](#inputs)
@@ -33,6 +35,9 @@ the config file. The seed number and a timestamp will be appended to a .seed fil
 with the same name.
 
 ### Running the Simulation
+[Python 3](https://www.python.org/downloads/) is required. Pip3 is also required
+and will be included with most installations of Python 3.
+
 1. [Navigate to the main directory](#navigate-to-the-main-directory)
 1. [Create a virtual environment (venv) for Python](#create-a-virtual-environment-for-python)
 1. [Activate the virtual environment](#activate-the-virtual-environment)

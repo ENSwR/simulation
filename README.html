@@ -375,6 +375,7 @@ environment</a></li>
 the venv</a></li>
 <li><a href="#running-simulation-with-configuration-file">Run the
 simulation with config file</a></li>
+<li><a href="#deactivate-the-venv">Deactivate the venv</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#directories">Directories</a>
@@ -405,6 +406,9 @@ appended to a .seed file with the same name.</p>
 </div>
 <div id="running-the-simulation" class="section level3">
 <h3>Running the Simulation</h3>
+<p><a href="https://www.python.org/downloads/">Python3</a> and pip3 are
+required for setting up the virtual environment and running the
+simulation</p>
 <ol style="list-style-type: decimal">
 <li><a href="#navigate-to-the-main-directory">Navigate to the main
 directory</a></li>
@@ -416,6 +420,7 @@ environment</a></li>
 the venv</a></li>
 <li><a href="#running-simulation-with-configuration-file">Run the
 simulation with config file</a></li>
+<li><a href="#deactivate-the-venv">Deactivate the venv</a></li>
 </ol>
 </div>
 <div id="navigate-to-the-main-directory" class="section level3">
@@ -470,6 +475,12 @@ it is computing, followed by a seed value when the simulation has
 completed.</p>
 <p>Results will appear in <a href="#results">./results/</a>.</p>
 </div>
+<div id="deactivate-the-venv" class="section level3">
+<h3>Deactivate the venv</h3>
+<p>When finished running simulations, the venv can be deactived by
+entering:</p>
+<pre><code>deactivate</code></pre>
+</div>
 </div>
 <div id="directories" class="section level2">
 <h2>Directories</h2>
@@ -480,14 +491,15 @@ data they produce.</p>
 </div>
 <div id="src" class="section level3">
 <h3>./src</h3>
-<p>The scr directory contains the source code for the simulation.</p>
+<p>The src directory contains the source code for the simulation.</p>
 </div>
 <div id="results" class="section level3">
 <h3>./results</h3>
 <p>The results directory is the output directory for the “.config” files
-found in <a href="#configs">configs</a>. It contains ‘.csv’ files, where
-the raw data from each simulation run gets stored, as well as associated
-‘.seed’ files which list a history of seed values for previous runs.</p>
+found in <a href="#configs">./configs</a>. It contains ‘.csv’ files,
+where the raw data from each simulation run gets stored, as well as
+associated ‘.seed’ files which list a history of seed values for
+previous runs.</p>
 <p>All simulation runs report a seed value, whether the value is set by
 the user in the configuration file, or whether the program generates its
 seed value at run-time.</p>

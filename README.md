@@ -11,6 +11,7 @@ This repository hosts the ENSwR simulation used in Papale et al. (2025)
         - [Activate the virtual environment](#activate-the-virtual-environment)
         - [Install requirements to the venv](#install-requirements-to-the-venv)
         - [Run the simulation with config file](#running-simulation-with-configuration-file)
+        - [Deactivate the venv](#deactivate-the-venv)
 - [Directories](#directories)
     * [./configs](#configs)
     * [./src](#src)
@@ -37,6 +38,7 @@ with the same name.
 1. [Activate the virtual environment](#activate-the-virtual-environment)
 1. [Install requirements to the venv](#install-requirements-to-the-venv)
 1. [Run the simulation with config file](#running-simulation-with-configuration-file)
+1. [Deactivate the venv](#deactivate-the-venv)
 
 ### Navigate to the main directory
 Extract the compressed .zip or .tar.gz file. Note the name and location of the 
@@ -89,6 +91,12 @@ The console should begin outputting numbers indicating the timestep it is
 computing, followed by a seed value when the simulation has completed.
 
 Results will appear in [./results/](#results).
+
+### Deactivate the venv
+When finished running simulations, the venv can be deactived by entering:
+```
+deactivate
+```
 
 ## Directories
 ### ./configs

@@ -50,6 +50,7 @@ required and will be included with most installations of Python 3.
 1. [Install requirements to the venv](#install-requirements-to-the-venv)
 1. [Run the simulation with config file](#running-simulation-with-configuration-file)
 1. [Deactivate the venv](#deactivate-the-venv)
+1. [Execution policy errors (Windows users)](#execution-policy-errors-windows-users)
 
 ### Navigate to the main directory
 Extract the compressed .zip or .tar.gz file. Note the name and location of the 
@@ -57,22 +58,6 @@ directory that is created.
 
 Using PowerShell (Windows) or a terminal (MacOS/Linux), navigate the working 
 directory to the extracted directory that was created.
-
-Windows users may encounter an error when trying to run scripts and activating 
-the venv. This can be solved by changing the execution policy.
-```
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
-```
-This will remove restrictions on which scripts can be executed by PowerShell.
-The "-Scope Process" flag ensures this change applies to only the running 
-PowerShell session. With this flag, these changes will not persist after the 
-PowerShell window is closed, and will need to be repeated if the simulation is 
-used again at a later time.
-
-The execution policy can also be reset by the user:
-```
-Set-ExecutionPolicy -ExecutionPolicy Default -Scope Process
-```
 
 ### Create a virtual environment for python
 In your terminal or PowerShell enter:
@@ -123,6 +108,23 @@ Results will appear in [./results/](#results).
 When finished running simulations, the venv can be deactived by entering:
 ```
 deactivate
+```
+
+### Execution policy errors (Windows users)
+Windows users may encounter an error when trying to run scripts and activating 
+the venv. This can be solved by changing the execution policy.
+```
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+```
+This will remove restrictions on which scripts can be executed by PowerShell.
+The "-Scope Process" flag ensures this change applies to only the running 
+PowerShell session. With this flag, these changes will not persist after the 
+PowerShell window is closed, and will need to be repeated if the simulation is 
+used again at a later time.
+
+The execution policy can also be reset by the user:
+```
+Set-ExecutionPolicy -ExecutionPolicy Default -Scope Process
 ```
 
 ## Directories

@@ -24,6 +24,7 @@ This simulation was written using Python 3.12.7
 
 ### Inputs
 This simulation requires a plain-text configuration file to be provided.
+Additional details can be found in [./configs/README.md](https://github.com/ENSwR/simulation/blob/main/configs/README.md)
 
 ### Outputs
 During runtime this simulation prints the actively running timestep to console.
@@ -33,6 +34,8 @@ config file does not specify a seed, then the seed will be randomly generated.
 At the end of runtime a .csv file will be output to the filepath specified in
 the config file. The seed number and a timestamp will be appended to a .seed file
 with the same name.
+
+Additional details can be found in [/results/README.md](https://github.com/ENSwR/simulation/blob/main/results/README.md)
 
 ### Running the Simulation
 [Python 3](https://www.python.org/downloads/) must be installed. Pip3 is also 
@@ -51,6 +54,22 @@ directory that is created.
 
 Using PowerShell (Windows) or a terminal (MacOS/Linux), navigate the working 
 directory to the extracted directory that was created.
+
+Windows users may encounter an error when trying to run scripts and activating 
+the venv. This can be solved by changing the execution policy.
+```
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+```
+This will remove restrictions on which scripts can be executed by PowerShell.
+The "-Scope Process" flag ensures this change applies to only the running 
+PowerShell session. With this flag, these changes will not persist after the 
+PowerShell window is closed, and will need to be repeated if the simulation is 
+used again at a later time.
+
+The execution policy can also be reset by the user:
+```
+Set-ExecutionPolicy -ExecutionPolicy Default -Scope Process
+```
 
 ### Create a virtual environment for python
 In your terminal or PowerShell enter:

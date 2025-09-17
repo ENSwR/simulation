@@ -1,6 +1,9 @@
 # **Overview**
 This repository hosts the ENSwR simulation used in Papale et al. (2025)
 
+Detailed descriptions of the model's assumptions, configurations, equations,
+and general design can be found in [./appendix.pdf](https://github.com/ENSwR/simulation/blob/main/appendix.pdf)
+
 This simulation was written using Python 3.12.7
 
 ### Table of Contents

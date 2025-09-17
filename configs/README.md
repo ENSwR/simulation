@@ -140,7 +140,8 @@ environment. This value is interpreted differently depending on how
 
 **[infinite_resources](#infinite_resources) = True**
 *production_bias* is the baseline number of particles that will be created before
-niche effects are calculated, as described in the appendix Equation 1 of Papale et al (2025).
+niche effects are calculated, as described in the [appendix](https://github.com/ENSwR/simulation/blob/main/appendix.pdf) 
+Equation 1 of Papale et al (2025).
 
 <p align="center">
 <img width="534" height="44" alt="image" src="https://github.com/user-attachments/assets/bbba8370-1c82-4dd5-9c65-37361a192d29" />
@@ -151,7 +152,8 @@ for more details
 
 **[infinite_resources](#infinite_resources) = False**
 *production_bias* is a factor of the weighting in Bernoulli trials, as described
-in the appendix Equation 2 of Papale et al. (2025).
+in the [appendix](https://github.com/ENSwR/simulation/blob/main/appendix.pdf) 
+Equation 2 of Papale et al. (2025).
 
 <p align="center">
 <img width="579" height="129" alt="image" src="https://github.com/user-attachments/assets/1e979517-5a97-485a-b18d-ae799ddf15f0" />

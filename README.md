@@ -27,6 +27,7 @@ This simulation was written using Python 3.12.7
 
 ### Inputs
 This simulation requires a plain-text configuration file to be provided.
+
 Additional details can be found in [./configs/README.md](https://github.com/ENSwR/simulation/blob/main/configs/README.md)
 
 ### Outputs

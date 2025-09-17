@@ -1,5 +1,9 @@
 # **Overview**
-This repository hosts the ENSwR simulation used in Papale et al. (2025)
+This repository hosts the ENSwR simulation used by Papale et al (2025).
+
+Papale, F., Kulish, Y., Bielawski, J.P., Haraoui, L.P. (2025). 
+*A niche construction-based perspective on chemical evolution before replication and reproduction*. 
+bioRxiv. [https://doi.org/10.1101/2025.07.29.667458](https://doi.org/10.1101/2025.07.29.667458) 
 
 Detailed descriptions of the model's assumptions, configurations, equations,
 and general design can be found in [./appendix.pdf](https://github.com/ENSwR/simulation/blob/main/appendix.pdf)

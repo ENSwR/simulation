@@ -55,49 +55,71 @@ class Model:
 	#on other niches.
 
 	def initSpecies(self, species = "",
+					niche_construction = 0,
 					A_niche_construction = 0, 
 					B_niche_construction = 0,
 					C_niche_construction = 0,
 					D_niche_construction = 0,
+					toxin_str = 0,
+					toxin_rad = 0,
+					antidote_str = 0,
+					antidote_rad = 0,
 					lifespan = 0,
 					production_bias = 0):
 
-		#Uncommenting the lines allows for particles to construct niches
-		#for other particles, or destroy each other's niches.
-		#This has been removed for this release to simplify configuration. 
 		if species == "A":
 			self.species_A = {"species":species, 
+						"niche_construction":niche_construction,
 						"A_niche_construction":A_niche_construction,
-						#"B_niche_construction":B_niche_construction,
-						#"C_niche_construction":C_niche_construction,
-						#"D_niche_construction":D_niche_construction, 
+						"B_niche_construction":B_niche_construction,
+						"C_niche_construction":C_niche_construction,
+						"D_niche_construction":D_niche_construction, 
+						"toxin_str":toxin_str, 
+						"toxin_rad":toxin_rad, 
+						"antidote_str":antidote_str, 
+						"antidote_rad":antidote_rad,
 						"lifespan":lifespan,
 						"production_bias":production_bias}
 
 		elif species == "B":
 			self.species_B = {"species":species, 
-						#"A_niche_construction":A_niche_construction,
+						"niche_construction":niche_construction,
+						"A_niche_construction":A_niche_construction,
 						"B_niche_construction":B_niche_construction,
-						#"C_niche_construction":C_niche_construction,
-						#"D_niche_construction":D_niche_construction,
+						"C_niche_construction":C_niche_construction,
+						"D_niche_construction":D_niche_construction, 
+						"toxin_str":toxin_str, 
+						"toxin_rad":toxin_rad, 
+						"antidote_str":antidote_str, 
+						"antidote_rad":antidote_rad,
 						"lifespan":lifespan,
 						"production_bias":production_bias}
 
 		elif species == "C":
 			self.species_C = {"species":species, 
-						#"A_niche_construction":A_niche_construction,
-						#"B_niche_construction":B_niche_construction,
+						"niche_construction":niche_construction,
+						"A_niche_construction":A_niche_construction,
+						"B_niche_construction":B_niche_construction,
 						"C_niche_construction":C_niche_construction,
-						#"D_niche_construction":D_niche_construction,
+						"D_niche_construction":D_niche_construction, 
+						"toxin_str":toxin_str, 
+						"toxin_rad":toxin_rad, 
+						"antidote_str":antidote_str, 
+						"antidote_rad":antidote_rad,
 						"lifespan":lifespan,
 						"production_bias":production_bias}
 
 		elif species == "D":
 			self.species_D = {"species":species, 
-						#"A_niche_construction":A_niche_construction,
-						#"B_niche_construction":B_niche_construction,
-						#"C_niche_construction":C_niche_construction,
-						"D_niche_construction":D_niche_construction,
+						"niche_construction":niche_construction,
+						"A_niche_construction":A_niche_construction,
+						"B_niche_construction":B_niche_construction,
+						"C_niche_construction":C_niche_construction,
+						"D_niche_construction":D_niche_construction, 
+						"toxin_str":toxin_str, 
+						"toxin_rad":toxin_rad, 
+						"antidote_str":antidote_str, 
+						"antidote_rad":antidote_rad,
 						"lifespan":lifespan,
 						"production_bias":production_bias}
 		else:

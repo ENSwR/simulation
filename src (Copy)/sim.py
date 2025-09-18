@@ -23,10 +23,9 @@ def extinctionTimestep(sim_environment,model):
 	#Retrieve data from the SimEngine for each grid square
 	for n in range(row):
 		for m in range(col):
-			result_handle = SimEngine.tallyResults(
-				sim_environment, model, n, m, 
-				population, pop_A, pop_B, pop_C, pop_D,
-				niche_A, niche_B, niche_C, niche_D)	
+			result_handle = SimEngine.tallyResults(sim_environment, model, n, m, 
+				population, pop_A, pop_B, pop_C, pop_D, 
+				niche, niche_A, niche_B, niche_C, niche_D)	
 
 	#Compile results from timestep data
 	results[0] = result_handle[0] #population
@@ -34,10 +33,11 @@ def extinctionTimestep(sim_environment,model):
 	results[2] = result_handle[2] #pop_B
 	results[3] = result_handle[3] #pop_C
 	results[4] = result_handle[4] #pop_D
-	results[5] = result_handle[5] #niche_A
-	results[6] = result_handle[6] #niche_B
-	results[7] = result_handle[7] #niche_C
-	results[8] = result_handle[8] #niche_D
+	results[5] = result_handle[5] #niche
+	results[6] = result_handle[6] #niche_A
+	results[7] = result_handle[7] #niche_B
+	results[8] = result_handle[8] #niche_C
+	results[9] = result_handle[9] #niche_D
 
 	return results
 
@@ -70,10 +70,9 @@ def timeStep(sim_environment,model):
 	#Retrieve results from the SimEngine for each grid suqare
 	for n in range(row):
 		for m in range(col):
-			result_handle = SimEngine.tallyResults(
-				sim_environment, model, n, m, 
+			result_handle = SimEngine.tallyResults(sim_environment, model, n, m, 
 				population, pop_A, pop_B, pop_C, pop_D, 
-				niche_A, niche_B, niche_C, niche_D)
+				niche, niche_A, niche_B, niche_C, niche_D)
 
 
 	#Compile results from timestep data
@@ -82,10 +81,11 @@ def timeStep(sim_environment,model):
 	results[2] = result_handle[2] #pop_B
 	results[3] = result_handle[3] #pop_C
 	results[4] = result_handle[4] #pop_D
-	results[5] = result_handle[5] #niche_A
-	results[6] = result_handle[6] #niche_B
-	results[7] = result_handle[7] #niche_C
-	results[8] = result_handle[8] #niche_D
+	results[5] = result_handle[5] #niche
+	results[6] = result_handle[6] #niche_A
+	results[7] = result_handle[7] #niche_B
+	results[8] = result_handle[8] #niche_C
+	results[9] = result_handle[9] #niche_D
 
 	return results
 
@@ -163,10 +163,11 @@ def main(model,output_file):
 		'Pop_B' : results[:,3],
 		'Pop_C' : results[:,4],
 		'Pop_D' : results[:,5],
-		'niche_A' : results[:,6],
-		'niche_B' : results[:,7],
-		'niche_C' : results[:,8],
-		'niche_D' : results[:,9],
+		'Niche' : results[:,6],
+		'niche_A' : results[:,7],
+		'niche_B' : results[:,8],
+		'niche_C' : results[:,9],
+		'niche_D' : results[:,10],
 	}
 
 	data = pd.DataFrame(data)

@@ -117,6 +117,10 @@ Eg:<br/>
 Will be accepted to correctly configure Species A, but will not apply any 
 effects to Species B or its niche.
 
+**Note:** This simulation does have support for species affecting each other's
+niches. However, it has been disabled for this release. It can be re-enabled by 
+uncommenting the lines noted in [../src/Dials.py](https://github.com/ENSwR/simulation/blob/main/src/Dials.py)
+
 ### <ins>lifespan</ins> (required for decay)
 Integer value specifying the number of timesteps a particle of the species 
 will persist in the population after it has been created. Particles created

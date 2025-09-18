@@ -200,7 +200,6 @@ A list containing [particle](#class-particle) instances representing a populatio
 
 #### *<ins>Method: resourceDosesInflux</ins>*
 Replenishes [resources](#parameter-resource_doses) for the [microenvironment](#class-gridcell).
-This is coded to set resource_doses = 5.
 
 #### *<ins>Method: growPopulation</ins>*
 Adds a new [particle](#class-particle) instance to the [population](#parameter-population) list.

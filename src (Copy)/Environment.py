@@ -4,36 +4,45 @@ import Population
 
 
 class GridCell:
-	def __init__ (self, niche_A = 0, niche_B = 0, niche_C = 0, \
-		niche_D =0, resource_doses = 0):
+	def __init__ (self, niche = 0, niche_A = 0, niche_B = 0, niche_C = 0, \
+		niche_D =0, local_effect = 0, resource_doses = 0):
+		self.niche = niche
 		self.niche_A = niche_A
 		self.niche_B = niche_B
 		self.niche_C = niche_C
 		self.niche_D = niche_D
 		self.population = []
+		self.local_effect = local_effect #Currently unused
 		self.resource_doses = resource_doses
 
 	def growPopulation(self, particle):
 		self.population.append(particle)
 		
-		#A limit is imposed on niche effect to prevent exponential ratchet effect.
+		#Note: "niche" is currently unused. Particles all have
+		#niche_construction = 0, so self.niche remains 0 and is not
+		#an active component of the simulation at this time.
+		self.niche += particle.getNicheConstruction()
+		
+		#Imposed a limit on niche effect to prevent exponential ratchet effect.
 		#As a species's niche gets better, each new individual's contribution
-		#becomes smaller.
-
-		#This design is intended to flexibly accommodate Particles which destroy
-		#niches of other particles, or particles which build niches for other particles.
+		#becomes smaller
 		if self.getNicheA() == 0: self.niche_A += particle.getNicheConstructionA()
 		else:
 			self.niche_A += particle.getNicheConstructionA()/self.getNicheA()
 		if self.getNicheB() == 0: self.niche_B += particle.getNicheConstructionB()
 		else:
 			self.niche_B += particle.getNicheConstructionB()/self.getNicheB()
-		if self.getNicheC() == 0: self.niche_C += particle.getNicheConstructionC()
-		else:
-			self.niche_C += particle.getNicheConstructionC()/self.getNicheC()
-		if self.getNicheD() == 0: self.niche_D += particle.getNicheConstructionD()
-		else:
-			self.niche_D += particle.getNicheConstructionD()/self.getNicheD()
+		
+		self.niche_C += particle.getNicheConstructionC()
+		self.niche_D += particle.getNicheConstructionD()
+	
+	"""
+	def migration(self):
+		new_coords = []
+		for i in self.population:
+			new_coords.appends(i.migrate())
+			print(new_coords)
+	"""
 	
 	def remove(self, particle):
 		self.population.remove(particle)
@@ -42,13 +51,11 @@ class GridCell:
 		if model.isDiffusion():
 
 			#1% chance of individuals surviving extinction to diffuse
-			indices = random.choices([True,False],
-				weights=[0.01,0.99], 
-				k=len(self.population))
-			print(indices)
-			self.population = np.array(self.population)[indices].tolist()		
+			indices = (np.random.uniform(size=len(self.population)) < 0.01).astype(bool)
+			self.population = np.array(self.population)[indices].tolist()
 		
-		else:				
+		else:			
+		
 			self.population = []
 
 	def extinctionA(self):
@@ -60,6 +67,9 @@ class GridCell:
 		for i in self.population: 
 			if i.getSpecies() == 'B': 
 				self.population.remove(i)
+
+	def setNiche(self, niche = 0):
+		self.niche = niche
 
 	def setNicheA(self, niche_A = 0):
 		self.niche_A = niche_A
@@ -73,6 +83,8 @@ class GridCell:
 	def setNicheD(self, niche_D = 0):
 		self.niche_D = niche_D
 
+	def getNiche(self):
+		return self.niche
 
 	def getNicheA(self):
 		return self.niche_A
@@ -92,8 +104,14 @@ class GridCell:
 	def setPopulation(self, population = []):
 		self.population = population
 
+	def setLocalEffect(self, flux_param):
+		self.local_effect = flux_param - (self.niche*flux_param)
+
+	def getLocalEffect(self):
+		return self.local_effect
+
 	def resourceDosesInflux(self):
-		self.resource_doses = 5	#Hard coded at 5
+		self.resource_doses = 5
 
 	def getResourceDoses(self):
 		return self.resource_doses
@@ -129,16 +147,6 @@ class Grid:
 		for n in range(self.row):
 			for m in range(self.col):
 				self.landscape[n][m].extinctionB()
-	
-	def extinctionC(self):
-		for n in range(self.row):
-			for m in range(self.col):
-				self.landscape[n][m].extinctionC()
-
-	def extinctionD(self):
-		for n in range(self.row):
-			for m in range(self.col):
-				self.landscape[n][m].extinctionD()
 
 	def getGridCell(self,n,m):
 		return self.landscape[n][m]

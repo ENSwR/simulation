@@ -5,3 +5,5 @@ src/generate_configs.py
 *.html
 *.Rhistory
 Visualizer.*
+analysis/
+analysis/*

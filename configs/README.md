@@ -102,17 +102,19 @@ Integer value for the niche construction value of the indicated species.
 In this release, the parameter name must explicitly indicate the same species 
 associated with the species of its associated header. This parameter must be
 correctly configured to run the simulation.
-```
+
 Eg:<br/>
-[Species_**A**]<br/>
-**B**_niche_construction = 2
+```
+[Species_A]
+B_niche_construction = 2
 ```
 Will produce an error.
-```
+
 Eg:<br/>
-[Species_**A**]<br/>
-**A**_niche_construction = 2<br/>
-**B**_niche_construction = 1
+```
+[Species_A]
+A_niche_construction = 2
+B_niche_construction = 1
 ```
 Will be accepted to correctly configure Species A, but will not apply any 
 effects to Species B or its niche.
@@ -130,11 +132,11 @@ Integer value specifying the number of timesteps a particle of the species
 will persist in the population after it has been created. Particles created
 at timestep *t* will be removed at timestep *t+1+lifespan*
 
-```
 Eg:<br/>
-[Species_A]<br/>
-A_niche_construction = 0<br/>
-lifespan = 0<br/> 
+```
+[Species_A]
+A_niche_construction = 0
+lifespan = 0
 production_bias = 1
 ```
 

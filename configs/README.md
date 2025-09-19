@@ -117,6 +117,9 @@ Eg:<br/>
 Will be accepted to correctly configure Species A, but will not apply any 
 effects to Species B or its niche.
 
+Negative values are not explicitly prevented, but may result in a invalid negative
+weight error when [infinite_resources](#infinite_resources) is *False*.
+
 **Note:** This simulation does have support for species affecting each other's
 niches. However, it has been disabled for this release. It can be re-enabled by 
 uncommenting the lines noted in [../src/Dials.py](https://github.com/ENSwR/simulation/blob/main/src/Dials.py)
@@ -142,6 +145,10 @@ non-extinction timesteps.
 Integer value specifying the bias for production of a species by the 
 environment. This value is interpreted differently depending on how
 [infinite_resources](#infinite_resources) is configured.
+
+Negative values are not explicitly prevented, but may result in a invalid negative
+weight error when [infinite_resources](#infinite_resources) is *False*. Otherwise
+it is treated as ```production_bias = 0```.
 
 **[infinite_resources](#infinite_resources) = True**
 *production_bias* is the baseline number of particles that will be created before

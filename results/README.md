@@ -3,8 +3,13 @@ This directory contains simulation outputs for the simulations used in
 Papale et al. (2025). Files are named for the figure data and configuration file
 they correspond to.
 
-**Note:** 4.csv is not included with this release due to filesize, but can be 
-produced by running the simulation using the 4.config configuration.
+**Note:** 4.csv is not included with this release due to filesize (11.6GB), but can be 
+produced by running the simulation using the 4.config configuration. Please
+see [4-resources.txt](https://github.com/ENSwR/simulation/blob/main/results/4-resources.txt)
+first, for example of ```/usr/bin/time -v``` time and resources required to produce 4.csv
+
+The program will appear to stall for a long period after the final timestep. Do not interrupt
+or perform memory intensive operations that might trigger SIGKILL at this stage.
 
 ## .csv
 Comma Separated Value files with a header row.

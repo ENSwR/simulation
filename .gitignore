@@ -1,9 +1,1 @@
-.gitignore
-venv/
-src/__pycache__
-src/generate_configs.py
-*.html
-*.Rhistory
-Visualizer.*
-analysis/
-analysis/*
+results/4.csv

@@ -45,7 +45,6 @@ class GridCell:
 			indices = random.choices([True,False],
 				weights=[0.01,0.99], 
 				k=len(self.population))
-			print(indices)
 			self.population = np.array(self.population)[indices].tolist()		
 		
 		else:				

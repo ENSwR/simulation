@@ -120,6 +120,7 @@ effects to Species B or its niche.
 **Note:** This simulation does have support for species affecting each other's
 niches. However, it has been disabled for this release. It can be re-enabled by 
 uncommenting the lines noted in [../src/Dials.py](https://github.com/ENSwR/simulation/blob/main/src/Dials.py)
+although it may not be fully developed and may not function as expected.
 
 ### <ins>lifespan</ins> (required for decay)
 Integer value specifying the number of timesteps a particle of the species 

@@ -157,12 +157,17 @@ Results from the runs using the provided configuration files are already
 included, and can be reproduced again by running the simulation with the 
 configuration files again.
 
-**Note:** Results for simulation running 4.config are not included due to 
-filesize. This simulation config runs 2,100,000 timesteps on a 10x10 
+**Note:** Results for simulation running [./configs/4.config](https://github.com/ENSwR/simulation/blob/main/configs/4.config)
+are not included due to filesize. This simulation config runs 2,100,000 timesteps on a 10x10 
 environment. The resulting .csv is approximately 12GB. To obtain these results, 
-run the simulation using 4.config and allow considerable time for the simulation
-to run through each timestep. Expect a long wait after the final timestep while
-the resulting .csv is being created.
+run the simulation using [./configs/4.config](https://github.com/ENSwR/simulation/blob/main/configs/4.config) 
+and allow considerable time for the simulation to run through each timestep. 
+Expect a long wait after the final timestep while the resulting .csv is being 
+created. 
+
+Additional details are available in [./results/README.md](https://github.com/ENSwR/simulation/tree/main/results#readme)
+
+Resources requirement outputs for this run are shown in [./results/4-resources.txt](https://github.com/ENSwR/simulation/blob/main/results/4-resources.txt)
 
 ## requirements.txt
 Contains the packages and versions info required to run the simulation.

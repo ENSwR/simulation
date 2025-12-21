@@ -13,30 +13,30 @@ class GridCell:
 		self.population = []
 		self.resource_doses = resource_doses
 
-	def growPopulation(self, particle):
-		self.population.append(particle)
+	def growPopulation(self, unit):
+		self.population.append(unit)
 		
 		#A limit is imposed on niche effect to prevent exponential ratchet effect.
-		#As a species's niche gets better, each new individual's contribution
+		#As a type's niche gets better, each new individual's contribution
 		#becomes smaller.
 
-		#This design is intended to flexibly accommodate Particles which destroy
-		#niches of other particles, or particles which build niches for other particles.
-		if self.getNicheA() == 0: self.niche_A += particle.getNicheConstructionA()
+		#This design is intended to flexibly accommodate units which destroy
+		#niches of other units, or units which build niches for other units.
+		if self.getNicheA() == 0: self.niche_A += unit.getNicheConstructionA()
 		else:
-			self.niche_A += particle.getNicheConstructionA()/self.getNicheA()
-		if self.getNicheB() == 0: self.niche_B += particle.getNicheConstructionB()
+			self.niche_A += unit.getNicheConstructionA()/self.getNicheA()
+		if self.getNicheB() == 0: self.niche_B += unit.getNicheConstructionB()
 		else:
-			self.niche_B += particle.getNicheConstructionB()/self.getNicheB()
-		if self.getNicheC() == 0: self.niche_C += particle.getNicheConstructionC()
+			self.niche_B += unit.getNicheConstructionB()/self.getNicheB()
+		if self.getNicheC() == 0: self.niche_C += unit.getNicheConstructionC()
 		else:
-			self.niche_C += particle.getNicheConstructionC()/self.getNicheC()
-		if self.getNicheD() == 0: self.niche_D += particle.getNicheConstructionD()
+			self.niche_C += unit.getNicheConstructionC()/self.getNicheC()
+		if self.getNicheD() == 0: self.niche_D += unit.getNicheConstructionD()
 		else:
-			self.niche_D += particle.getNicheConstructionD()/self.getNicheD()
+			self.niche_D += unit.getNicheConstructionD()/self.getNicheD()
 	
-	def remove(self, particle):
-		self.population.remove(particle)
+	def remove(self, unit):
+		self.population.remove(unit)
 
 	def extinction(self, model):
 		if model.isDiffusion():
@@ -52,12 +52,12 @@ class GridCell:
 
 	def extinctionA(self):
 		for i in self.population: 
-			if i.getSpecies() == 'A': 
+			if i.getType() == 'A': 
 				self.population.remove(i)
 
 	def extinctionB(self):
 		for i in self.population: 
-			if i.getSpecies() == 'B': 
+			if i.getType() == 'B': 
 				self.population.remove(i)
 
 	def setNicheA(self, niche_A = 0):

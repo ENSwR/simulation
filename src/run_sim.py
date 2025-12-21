@@ -9,24 +9,24 @@ config.read(sys.argv[1])
 
 dials = config['Dials']
 
-#This model supports up to 4 species.
-#This allows unused species to be omitted from config
+#This model supports up to 4 types.
+#This allows unused types to be omitted from config
 try:
-	species_A = config['Species_A']
+	type_A = config['Type_A']
 except:
-	species_A = None
+	type_A = None
 try:
-	species_B = config['Species_B']
+	type_B = config['Type_B']
 except:
-	species_B = None
+	type_B = None
 try:
-	species_C = config['Species_C']
+	type_C = config['Type_C']
 except:
-	species_C = None
+	type_C = None
 try:
-	species_D = config['Species_D']
+	type_D = config['Type_D']
 except:
-	species_D = None
+	type_D = None
 
 
 ############################################################################
@@ -57,82 +57,82 @@ model = Dials.Model(output_file = dials['output_file'],
 	seed = set_seed)
 
 ############################################################################
-#Initialize Species
+#Initialize Types
 ############################################################################
 
 
-def initEmptySpecies(model, type):
-	model.initSpecies(species = str(type),
+def initEmptyType(model, type):
+	model.initType(type = str(type),
 						A_niche_construction = 0,
 						B_niche_construction = 0,
 						C_niche_construction = 0,
 						D_niche_construction = 0,
-						production_bias = 0,
+						production_rate = 0,
 						lifespan = 0)
 
 
-#Note this model supports species which are not used.
+#Note this model supports types which are not used.
 #This section has had some functionality commented 
 #out to emphasize what is being used in the simulation.
 
-if species_A is not None:
+if type_A is not None:
 	if model.isDecay():	
-		model.initSpecies(species = "A",
-							A_niche_construction = int(species_A['A_niche_construction']),
-							#B_niche_construction = int(species_A['B_niche_construction']),
-							#C_niche_construction = int(species_A['C_niche_construction']),
-							#D_niche_construction = int(species_A['D_niche_construction']),
-							production_bias = int(species_A['production_bias']),
-							lifespan = int(species_A['lifespan']))
+		model.initType(type = "A",
+							A_niche_construction = int(type_A['A_niche_construction']),
+							#B_niche_construction = int(type_A['B_niche_construction']),
+							#C_niche_construction = int(type_A['C_niche_construction']),
+							#D_niche_construction = int(type_A['D_niche_construction']),
+							production_rate = int(type_A['production_rate']),
+							lifespan = int(type_A['lifespan']))
 	else:
-		model.initSpecies(species = "A",
-							A_niche_construction = int(species_A['A_niche_construction']),
-							#B_niche_construction = int(species_A['B_niche_construction']),
-							#C_niche_construction = int(species_A['C_niche_construction']),
-							#D_niche_construction = int(species_A['D_niche_construction']),
-							production_bias = int(species_A['production_bias']))
+		model.initType(type = "A",
+							A_niche_construction = int(type_A['A_niche_construction']),
+							#B_niche_construction = int(type_A['B_niche_construction']),
+							#C_niche_construction = int(type_A['C_niche_construction']),
+							#D_niche_construction = int(type_A['D_niche_construction']),
+							production_rate = int(type_A['production_rate']))
 else:
-	initEmptySpecies(model,"A")
+	initEmptyType(model,"A")
 
-if species_B is not None:
+if type_B is not None:
 	if model.isDecay():
-		model.initSpecies(species = "B",
-							#A_niche_construction = int(species_B['A_niche_construction']),
-							B_niche_construction = int(species_B['B_niche_construction']),
-							#C_niche_construction = int(species_B['C_niche_construction']),
-							#D_niche_construction = int(species_B['D_niche_construction']),
-							production_bias = int(species_B['production_bias']),
-							lifespan = int(species_B['lifespan']))
+		model.initType(type = "B",
+							#A_niche_construction = int(type_B['A_niche_construction']),
+							B_niche_construction = int(type_B['B_niche_construction']),
+							#C_niche_construction = int(type_B['C_niche_construction']),
+							#D_niche_construction = int(type_B['D_niche_construction']),
+							production_rate = int(type_B['production_rate']),
+							lifespan = int(type_B['lifespan']))
 	else:
-		model.initSpecies(species = "B",
-							#A_niche_construction = int(species_B['A_niche_construction']),
-							B_niche_construction = int(species_B['B_niche_construction']),
-							#C_niche_construction = int(species_B['C_niche_construction']),
-							#D_niche_construction = int(species_B['D_niche_construction']),
-							production_bias = int(species_B['production_bias']))
+		model.initType(type = "B",
+							#A_niche_construction = int(type_B['A_niche_construction']),
+							B_niche_construction = int(type_B['B_niche_construction']),
+							#C_niche_construction = int(type_B['C_niche_construction']),
+							#D_niche_construction = int(type_B['D_niche_construction']),
+							production_rate = int(type_B['production_rate']))
 else:
-	initEmptySpecies(model,"B")
+	initEmptyType(model,"B")
 
-if species_C is not None:
-	model.initSpecies(species = "C")#,
-						#A_niche_construction = int(species_C['A_niche_construction']),
-						#B_niche_construction = int(species_C['B_niche_construction']),
-						#C_niche_construction = int(species_C['C_niche_construction']),
-						#D_niche_construction = int(species_C['D_niche_construction']),
-						#production_bias = int(species_C['production_bias']))
-
-else:
-	initEmptySpecies(model,"C")
-
-if species_D is not None:
-	model.initSpecies(species = "D")#,
-						#A_niche_construction = int(species_D['A_niche_construction']),
-						#B_niche_construction = int(species_D['B_niche_construction']),
-						#C_niche_construction = int(species_D['C_niche_construction']),
-						#D_niche_construction = int(species_D['D_niche_construction']),
-						#production_bias = int(species_D['production_bias']))
+if type_C is not None:
+	model.initType(type = "C")#,
+						#A_niche_construction = int(type_C['A_niche_construction']),
+						#B_niche_construction = int(type_C['B_niche_construction']),
+						#C_niche_construction = int(type_C['C_niche_construction']),
+						#D_niche_construction = int(type_C['D_niche_construction']),
+						#production_rate = int(type_C['production_rate']))
 
 else:
-	initEmptySpecies(model,"D")
+	initEmptyType(model,"C")
+
+if type_D is not None:
+	model.initType(type = "D")#,
+						#A_niche_construction = int(type_D['A_niche_construction']),
+						#B_niche_construction = int(type_D['B_niche_construction']),
+						#C_niche_construction = int(type_D['C_niche_construction']),
+						#D_niche_construction = int(type_D['D_niche_construction']),
+						#production_rate = int(type_D['production_rate']))
+
+else:
+	initEmptyType(model,"D")
 
 sim.main(model,model.getOutputFile())

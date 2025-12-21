@@ -63,11 +63,11 @@ def timeStep(sim_environment,model):
 		for m in range(col):
 			#Determines whether to implement resource limitation			
 			if model.isInfiniteResources(): 
-				SimEngine.productionBiasLimited(sim_environment,model,n,m)
+				SimEngine.productionRateLimited(sim_environment,model,n,m)
 			else: 
 				SimEngine.binomialDraw(sim_environment,model,n,m)
 	
-	#Retrieve results from the SimEngine for each grid suqare
+	#Retrieve results from the SimEngine for each grid square
 	for n in range(row):
 		for m in range(col):
 			result_handle = SimEngine.tallyResults(
@@ -135,7 +135,7 @@ def main(model,output_file):
 			
 			print(t)
 
-	#Calculates total populations of each chemical species
+	#Calculates total populations of each type
 	#over the whole environment
 	sum_Pop = []
 	sum_A = []

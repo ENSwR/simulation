@@ -5,10 +5,10 @@ class Model:
 	def __init__ (self, output_file = ".",
 						timesteps = 0, 
 						extinction_gap = 0, 
-						species_A = {}, 
-						species_B = {}, 
-						species_C = {}, 
-						species_D = {},
+						type_A = {}, 
+						type_B = {}, 
+						type_C = {}, 
+						type_D = {},
 						env_x = 0,
 						env_y = 0,
 						decay = False,
@@ -18,10 +18,10 @@ class Model:
 		self.output_file = output_file
 		self.timesteps = timesteps
 		self.extinction_gap = extinction_gap
-		self.species_A = species_A
-		self.species_B = species_B
-		self.species_C = species_C
-		self.species_D = species_D
+		self.type_A = type_A
+		self.type_B = type_B
+		self.type_C = type_C
+		self.type_D = type_D
 		self.env_x = env_x
 		self.env_y = env_y
 		self.decay = bool(decay)
@@ -51,57 +51,57 @@ class Model:
 
 	#Note: this simulation supports, or has partially developed
 	#machinery for a range of functions such a toxin/antidote
-	#interactions between species, or impacts of one species
+	#interactions between types, or impacts of one type
 	#on other niches.
 
-	def initSpecies(self, species = "",
+	def initType(self, type = "",
 					A_niche_construction = 0, 
 					B_niche_construction = 0,
 					C_niche_construction = 0,
 					D_niche_construction = 0,
 					lifespan = 0,
-					production_bias = 0):
+					production_rate = 0):
 
-		#Uncommenting the lines allows for particles to construct niches
-		#for other particles, or destroy each other's niches.
+		#Uncommenting the lines allows for units to construct niches
+		#for other units, or destroy each other's niches.
 		#This has been removed for this release to simplify configuration. 
-		if species == "A":
-			self.species_A = {"species":species, 
+		if type == "A":
+			self.type_A = {"type":type, 
 						"A_niche_construction":A_niche_construction,
 						#"B_niche_construction":B_niche_construction,
 						#"C_niche_construction":C_niche_construction,
 						#"D_niche_construction":D_niche_construction, 
 						"lifespan":lifespan,
-						"production_bias":production_bias}
+						"production_rate":production_rate}
 
-		elif species == "B":
-			self.species_B = {"species":species, 
+		elif type == "B":
+			self.type_B = {"type":type, 
 						#"A_niche_construction":A_niche_construction,
 						"B_niche_construction":B_niche_construction,
 						#"C_niche_construction":C_niche_construction,
 						#"D_niche_construction":D_niche_construction,
 						"lifespan":lifespan,
-						"production_bias":production_bias}
+						"production_rate":production_rate}
 
-		elif species == "C":
-			self.species_C = {"species":species, 
+		elif type == "C":
+			self.type_C = {"type":type, 
 						#"A_niche_construction":A_niche_construction,
 						#"B_niche_construction":B_niche_construction,
 						"C_niche_construction":C_niche_construction,
 						#"D_niche_construction":D_niche_construction,
 						"lifespan":lifespan,
-						"production_bias":production_bias}
+						"production_rate":production_rate}
 
-		elif species == "D":
-			self.species_D = {"species":species, 
+		elif type == "D":
+			self.type_D = {"type":type, 
 						#"A_niche_construction":A_niche_construction,
 						#"B_niche_construction":B_niche_construction,
 						#"C_niche_construction":C_niche_construction,
 						"D_niche_construction":D_niche_construction,
 						"lifespan":lifespan,
-						"production_bias":production_bias}
+						"production_rate":production_rate}
 		else:
-			print ("Unrecognized species: " + str(species))
+			print ("Unrecognized type: " + str(type))
 	
 	def getTimesteps(self):
 		return self.timesteps
@@ -109,14 +109,14 @@ class Model:
 		return self.extinction_gap
 	def getSeed(self):
 		return self.seed
-	def getSpeciesA(self):
-		return self.species_A
-	def getSpeciesB(self):
-		return self.species_B
-	def getSpeciesC(self):
-		return self.species_C
-	def getSpeciesD(self):
-		return self.species_D
+	def getTypeA(self):
+		return self.type_A
+	def getTypeB(self):
+		return self.type_B
+	def getTypeC(self):
+		return self.type_C
+	def getTypeD(self):
+		return self.type_D
 	def getOutputFile(self):
 		return self.output_file
 	
@@ -131,17 +131,17 @@ class Model:
 		+"decay = " + str(self.decay)+"\n"\
 		+"diffusion = " + str(self.diffusion)+"\n"\
 		+"infinite_resources = " + str(self.infinite_resources)+"\n"\
-		+"\n[Species_A]\n"
-		temp_str = str(self.species_A).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
+		+"\n[Type_A]\n"
+		temp_str = str(self.type_A).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
 		message += temp_str
-		message += "\n[Species_B]\n"
-		temp_str = str(self.species_B).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
+		message += "\n[Type_B]\n"
+		temp_str = str(self.type_B).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
 		message += temp_str
-		message +="\n[Species_C]\n"
-		temp_str = str(self.species_C).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
+		message +="\n[Type_C]\n"
+		temp_str = str(self.type_C).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
 		message += temp_str
-		message += "\n[Species_D]\n"
-		temp_str = str(self.species_D).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
+		message += "\n[Type_D]\n"
+		temp_str = str(self.type_D).replace(', ','\n').replace(': ', ' = ').replace('{','').replace('}','').replace("'",'')+"\n"
 		message += temp_str
 
 		return message

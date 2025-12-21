@@ -12,35 +12,35 @@ def binomialDraw(sim_environment,model,n,m):
 	#Calculate weights for the Bernoulli experiment
 	if model.isDiffusion():
 
-		#Only GridCell(1,1) supports production_bias for A's.
+		#Only GridCell(1,1) supports production_rate for A's.
 		#In order to populate other GridCell spaces A must
 		#diffuse and construct a niche.
 		if (n == 1 and m == 1):
-			weights = [model.getSpeciesA()['production_bias']+
+			weights = [model.getTypeA()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheA(),
-			model.getSpeciesB()['production_bias']+
+			model.getTypeB()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheB(),
-			model.getSpeciesC()['production_bias']+
+			model.getTypeC()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheC(),
-			model.getSpeciesD()['production_bias']+
+			model.getTypeD()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheD()]
 		else:
 			weights = [0+sim_environment.getLandscape()[n][m].getNicheA(),
-			model.getSpeciesB()['production_bias']+
+			model.getTypeB()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheB(),
-			model.getSpeciesC()['production_bias']+
+			model.getTypeC()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheC(),
-			model.getSpeciesD()['production_bias']+
+			model.getTypeD()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheD()]
 	else:		
 
-		weights = [model.getSpeciesA()['production_bias']+
+		weights = [model.getTypeA()['production_rate']+
 		sim_environment.getLandscape()[n][m].getNicheA(),
-		model.getSpeciesB()['production_bias']+
+		model.getTypeB()['production_rate']+
 		sim_environment.getLandscape()[n][m].getNicheB(),
-		model.getSpeciesC()['production_bias']+
+		model.getTypeC()['production_rate']+
 		sim_environment.getLandscape()[n][m].getNicheC(),
-		model.getSpeciesD()['production_bias']+
+		model.getTypeD()['production_rate']+
 		sim_environment.getLandscape()[n][m].getNicheD()]
 
 	#Implementation of the draws
@@ -50,42 +50,42 @@ def binomialDraw(sim_environment,model,n,m):
 	for product in spawn:
 		if product == "A": 
 			sim_environment.getLandscape()[n][m]\
-			.growPopulation(Population.Particle(**model.getSpeciesA()))
+			.growPopulation(Population.Unit(**model.getTypeA()))
 		elif product == "B": 
 			sim_environment.getLandscape()[n][m]\
-			.growPopulation(Population.Particle(**model.getSpeciesB()))
+			.growPopulation(Population.Unit(**model.getTypeB()))
 		elif product == "C": 
 			sim_environment.getLandscape()[n][m]\
-			.growPopulation(Population.Particle(**model.getSpeciesC()))
+			.growPopulation(Population.Unit(**model.getTypeC()))
 		elif product == "D": 
 			sim_environment.getLandscape()[n][m]\
-			.growPopulation(Population.Particle(**model.getSpeciesD()))
+			.growPopulation(Population.Unit(**model.getTypeD()))
 	
 #Assigns resource doses to each micro-environment
 def createResourceDoses(sim_environment,n,m):
 	sim_environment.getLandscape()[n][m].resourceDosesInflux()
 
-#Production is calculated as a sum of production_bias and niche
-def productionBiasLimited(sim_environment, model, n, m):
+#Production is calculated as a sum of production_rate and niche
+def productionRateLimited(sim_environment, model, n, m):
 	if model.isDecay():
 		decay(sim_environment,n,m)
 
-	for i in range(model.getSpeciesA()['production_bias']+
+	for i in range(model.getTypeA()['production_rate']+
 		int(sim_environment.getLandscape()[n][m].getNicheA())):
 		sim_environment.getLandscape()[n][m]\
-		.growPopulation(Population.Particle(**model.getSpeciesA()))	
-	for i in range(model.getSpeciesB()['production_bias']+
+		.growPopulation(Population.Unit(**model.getTypeA()))	
+	for i in range(model.getTypeB()['production_rate']+
 		int(sim_environment.getLandscape()[n][m].getNicheB())):
 		sim_environment.getLandscape()[n][m]\
-		.growPopulation(Population.Particle(**model.getSpeciesB()))
-	for i in range(model.getSpeciesC()['production_bias']+
+		.growPopulation(Population.Unit(**model.getTypeB()))
+	for i in range(model.getTypeC()['production_rate']+
 		int(sim_environment.getLandscape()[n][m].getNicheC())):
 		sim_environment.getLandscape()[n][m]\
-		.growPopulation(Population.Particle(**model.getSpeciesC()))	
-	for i in range(model.getSpeciesD()['production_bias']+
+		.growPopulation(Population.Unit(**model.getTypeC()))	
+	for i in range(model.getTypeD()['production_rate']+
 		int(sim_environment.getLandscape()[n][m].getNicheD())):
 		sim_environment.getLandscape()[n][m]\
-		.growPopulation(Population.Particle(**model.getSpeciesD()))
+		.growPopulation(Population.Unit(**model.getTypeD()))
 
 #Invoke decay on all individuals
 #If an individual's lifespan is 0 then it will not
@@ -143,13 +143,13 @@ def tallyResults(sim_environment, model, n, m,
 	count_D = 0
 
 	for individual in sim_environment.getLandscape()[n][m].getPopulation():
-		if individual.getSpecies() == 'A':
+		if individual.getType() == 'A':
 			count_A += 1
-		elif individual.getSpecies() == 'B':
+		elif individual.getType() == 'B':
 			count_B += 1
-		elif individual.getSpecies() == 'C':
+		elif individual.getType() == 'C':
 			count_C += 1
-		elif individual.getSpecies() == 'D':
+		elif individual.getType() == 'D':
 			count_D += 1
 
 	population[n][m] = count_A+count_B+count_C+count_D

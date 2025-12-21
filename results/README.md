@@ -21,14 +21,14 @@ The number of previous extinctions which have occurred in the simulation.
 
 #### <ins>Tot_Pop(_X)</ins>
 A population tally combined across all GridCells of total populations, or 
-specific speciespopulations, as indicated under the corresponding column headers.
+specific type's populations, as indicated under the corresponding column headers.
 
 #### <ins>Pop(_X)</ins>
-Population tallies of each GridCell for all species populations, or specific 
-species populations.
+Population tallies of each GridCell for all type populations, or specific 
+type populations.
 
 #### <ins>niche_X</ins>
-Niche property tallies of each GridCell for a given species.
+Niche property tallies of each GridCell for a given type.
 
 ## .seed
 Plain-text file which records a timestep of when a simulation was run and

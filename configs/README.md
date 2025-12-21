@@ -17,10 +17,10 @@ will take on default values.
     + [decay](#decay)
     + [diffusion](#diffusion)
     + [infinite_resources](#infinite_resources)
-* [Species_X](#species_x)
+* [Type_X](#type_x)
     + [X_niche_construction](#x_niche_construction-required)
     + [lifespan](#lifespan-required-for-decay)
-    + [production_bias](#production_bias-required)
+    + [production_rate](#production_rate-required)
 
 ## [Dials]
 Sets the simulation and environment parameters.
@@ -71,7 +71,7 @@ functionality.
 **Default: False**
 
 **Note:** If decay is enabled then a [lifespan](#lifespan-(required-for-decay)) parameter must be
-configured for both species, otherwise an error will be produced.
+configured for both types, otherwise an error will be produced.
 
 ### <ins>diffusion</ins>
 Boolean (True/False) which toggles whether the model will include diffusion 
@@ -88,74 +88,76 @@ limitation.
 
 **Default: False**
 
-## [Species_X]
-Sets the species-specific parameters.
+## [Type_X]
+Sets the type-specific parameters.
 
-While Species A and Species B are used throughout Papale et al. (2025), the
-simulation supports a Species C and Species D for a maximum of 4 species in a
+While Type A and Type B are used throughout Papale et al. (2025), the
+simulation supports a Type C and Type D for a maximum of 4 types in a
 simulated run.
 
-If a species is not configured it is not included in the simulation.
+If a type is not configured it is not included in the simulation.
 
 ### <ins>X_niche_construction</ins> (required)
-Integer value for the niche construction value of the indicated species. 
-In this release, the parameter name must explicitly indicate the same species 
-associated with the species of its associated header. This parameter must be
+Integer value for the niche construction value of the indicated type. 
+In this release, this parameter name must explicitly indicate the same type 
+associated with its header's type. This parameter must be
 correctly configured to run the simulation.
 
 Eg:<br/>
 ```
-[Species_A]
+[Type_A]
 B_niche_construction = 2
 ```
 Will produce an error.
 
 Eg:<br/>
 ```
-[Species_A]
+[Type_A]
 A_niche_construction = 2
 B_niche_construction = 1
 ```
-Will be accepted to correctly configure Species A, but will not apply any 
-effects to Species B or its niche.
+Will be accepted to correctly configure Type A, but will not implement any 
+effects to Type B or its niche.
 
 Negative values are not explicitly prevented, but may result in a invalid negative
 weight error when [infinite_resources](#infinite_resources) is *False*.
 
-**Note:** This simulation does have support for species affecting each other's
-niches. However, it has been disabled for this release. It can be re-enabled by 
+**Note:** This simulation can support types affecting each other's
+niches. However, [u]this has been disabled for this release[/u]. It can be enabled by 
 uncommenting the lines noted in [../src/Dials.py](https://github.com/ENSwR/simulation/blob/main/src/Dials.py)
-although it may not be fully developed and may not function as expected.
+although it may not be fully developed and may not function as expected. In this
+case, the second example above will allow Type A to impact Type B's niche as well as
+its own when it is created.
 
 ### <ins>lifespan</ins> (required for decay)
-Integer value specifying the number of timesteps a particle of the species 
-will persist in the population after it has been created. Particles created
+Integer value specifying the number of timesteps a unit of the type 
+will persist in the population after it has been created. Units created
 at timestep *t* will be removed at timestep *t+1+lifespan*
 
 Eg:<br/>
 ```
-[Species_A]
+[Type_A]
 A_niche_construction = 0
 lifespan = 0
-production_bias = 1
+production_rate = 1
 ```
 
-Each timestep 1 particle will be produced, and any particles produced in the
-previous timestep will be be removed. In this example, only 1 particle can be
+Each timestep 1 unit will be produced, and any units produced in the
+previous timestep will be be removed. In this example, only 1 unit can be
 produced in any timestep, so the population will always be 1 for all 
 non-extinction timesteps.
 
-### <ins>production_bias</ins> (required)
-Integer value specifying the bias for production of a species by the 
+### <ins>production_rate</ins> (required)
+Integer value specifying the rate for production of a type by the 
 environment. This value is interpreted differently depending on how
 [infinite_resources](#infinite_resources) is configured.
 
 Negative values are not explicitly prevented, but may result in a invalid negative
 weight error when [infinite_resources](#infinite_resources) is *False*. Otherwise
-it is treated as ```production_bias = 0```.
+it is treated as ```production_rate = 0```.
 
 **[infinite_resources](#infinite_resources) = True**
-*production_bias* is the baseline number of particles that will be created before
+*production_rate* is the baseline number of units that will be created before
 niche effects are calculated, as described in the [appendix](https://github.com/ENSwR/simulation/blob/main/appendix.pdf) 
 Equation 1 of Papale et al (2025).
 
@@ -163,11 +165,11 @@ Equation 1 of Papale et al (2025).
 <img width="534" height="44" alt="image" src="https://github.com/user-attachments/assets/bbba8370-1c82-4dd5-9c65-37361a192d29" />
 </p>
 
-See [src/SimEngine#productionBiasLimited](https://github.com/ENSwR/simulation/tree/main/src#function-productionbiaslimited)
+See [src/SimEngine#productionRateLimited](https://github.com/ENSwR/simulation/tree/main/src#function-productionratelimited)
 for more details
 
 **[infinite_resources](#infinite_resources) = False**
-*production_bias* is a factor of the weighting in Bernoulli trials, as described
+*production_rate* is a factor of the weighting in Bernoulli trials, as described
 in the [appendix](https://github.com/ENSwR/simulation/blob/main/appendix.pdf) 
 Equation 2 of Papale et al. (2025).
 
@@ -193,23 +195,23 @@ decay = *True/False*
 diffusion = *True/False*
 infinite_resources = *True/False*
 
-[Species_A]
+[Type_A]
 A_niche_construction = *integer value*
 lifespan = *integer value*
-production_bias = *integer value*
+production_rate = *integer value*
 
-[Species_B]
+[Type_B]
 B_niche_construction = *integer value*
 lifespan = *integer value*
-production_bias = *integer value*
+production_rate = *integer value*
 
-[Species_C]
+[Type_C]
 C_niche_construction = *integer value*
 lifespan = *integer value*
-production_bias = *integer value*
+production_rate = *integer value*
 
-[Species_D]
+[Type_D]
 D_niche_construction = *integer value*
 lifespan = *integer value*
-production_bias = *integer value*
+production_rate = *integer value*
 ```

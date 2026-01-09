@@ -4,7 +4,7 @@ This repository hosts the ENSwR simulation used by Papale et al (2025).
 (Submitted and awaiting review)
 
 Papale, F., Kulish, Y., Bielawski, J.P., Haraoui, L.P. (2025). 
-*NEW TITLE IN PROGRESS*. 
+A niche construction-based approach to evolution by natural selection without reproduction – proof of concept and theoretical implications. 
 bioRxiv. [https://doi.org/10.1101/2025.07.29.667458](https://doi.org/10.1101/2025.07.29.667458) 
 
 

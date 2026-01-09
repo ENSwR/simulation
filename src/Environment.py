@@ -2,6 +2,7 @@ import numpy as np
 import random
 import Population
 
+#An individual micro-environment within the Grid
 
 class GridCell:
 	def __init__ (self, niche_A = 0, niche_B = 0, niche_C = 0, \
@@ -96,6 +97,8 @@ class GridCell:
 
 	def getResourceDoses(self):
 		return self.resource_doses
+
+# nxn grid of micro-environments
 
 class Grid:
 	def __init__ (self,n = 0, m = 0):

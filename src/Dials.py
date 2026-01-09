@@ -1,3 +1,5 @@
+#This module initializes the simulation model's parameters
+
 class Model:
 	def __new__(cls, *args, **kwargs):
 		return super().__new__(cls)
@@ -54,6 +56,7 @@ class Model:
 	#interactions between types, or impacts of one type
 	#on other niches.
 
+	#Initialize values for unit types
 	def initType(self, type = "",
 					A_niche_construction = 0, 
 					B_niche_construction = 0,

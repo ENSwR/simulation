@@ -4,6 +4,10 @@ import configparser
 import sim
 import random
 
+############################################################################
+#This script is the starting point of the simulation
+############################################################################
+
 config = configparser.ConfigParser(allow_no_value=True)
 config.read(sys.argv[1])
 

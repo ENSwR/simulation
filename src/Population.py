@@ -1,4 +1,9 @@
 import random
+
+#Units which can comprise a population 
+#stored in population parameter of 
+#Environment.GridCell
+
 class Unit:
 	__slots__ = ['type', 
 				'A_niche_construction', 

@@ -2,6 +2,9 @@ import numpy as np
 import Population
 import random
 
+#Module is responsible for carrying out computations
+#of the simulation and returning results
+
 def binomialDraw(sim_environment,model,n,m):
 		
 	createResourceDoses(sim_environment,n,m)
@@ -14,7 +17,7 @@ def binomialDraw(sim_environment,model,n,m):
 
 		#Only GridCell(1,1) supports production_rate for A's.
 		#In order to populate other GridCell spaces A must
-		#diffuse and construct a niche.
+		#diffuse and construct a niche
 		if (n == 1 and m == 1):
 			weights = [model.getTypeA()['production_rate']+
 			sim_environment.getLandscape()[n][m].getNicheA(),

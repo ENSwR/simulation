@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
+#This module handles bookkeeping, outputs, and 
+#invoking the correct processes for a given model
+
 def extinctionTimestep(sim_environment,model):
 
 	row, col = np.shape(sim_environment.getLandscape())

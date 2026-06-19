@@ -62,7 +62,7 @@ class Model:
 					B_niche_construction = 0,
 					C_niche_construction = 0,
 					D_niche_construction = 0,
-					lifespan = 0,
+					residence_time = 0,
 					production_rate = 0):
 
 		#Uncommenting the lines allows for units to construct niches
@@ -74,7 +74,7 @@ class Model:
 						#"B_niche_construction":B_niche_construction,
 						#"C_niche_construction":C_niche_construction,
 						#"D_niche_construction":D_niche_construction, 
-						"lifespan":lifespan,
+						"residence_time":residence_time,
 						"production_rate":production_rate}
 
 		elif type == "B":
@@ -83,7 +83,7 @@ class Model:
 						"B_niche_construction":B_niche_construction,
 						#"C_niche_construction":C_niche_construction,
 						#"D_niche_construction":D_niche_construction,
-						"lifespan":lifespan,
+						"residence_time":residence_time,
 						"production_rate":production_rate}
 
 		elif type == "C":
@@ -92,7 +92,7 @@ class Model:
 						#"B_niche_construction":B_niche_construction,
 						"C_niche_construction":C_niche_construction,
 						#"D_niche_construction":D_niche_construction,
-						"lifespan":lifespan,
+						"residence_time":residence_time,
 						"production_rate":production_rate}
 
 		elif type == "D":
@@ -101,7 +101,7 @@ class Model:
 						#"B_niche_construction":B_niche_construction,
 						#"C_niche_construction":C_niche_construction,
 						"D_niche_construction":D_niche_construction,
-						"lifespan":lifespan,
+						"residence_time":residence_time,
 						"production_rate":production_rate}
 		else:
 			print ("Unrecognized type: " + str(type))

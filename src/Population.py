@@ -10,7 +10,7 @@ class Unit:
 				'B_niche_construction',
 				'C_niche_construction',
 				'D_niche_construction',
-				'lifespan',
+				'residence_time',
 				'production_rate',
 				'diffused']
 
@@ -22,7 +22,7 @@ class Unit:
 						B_niche_construction = 0,
 						C_niche_construction = 0,
 						D_niche_construction = 0,
-						lifespan = 1,
+						residence_time = 1,
 						production_rate = 0,
 						diffused = False):
 		self.type = type
@@ -30,7 +30,7 @@ class Unit:
 		self.B_niche_construction = B_niche_construction
 		self.C_niche_construction = C_niche_construction
 		self.D_niche_construction = D_niche_construction
-		self.lifespan = lifespan
+		self.residence_time = residence_time
 		self.production_rate = production_rate
 		self.diffused = diffused
 
@@ -84,14 +84,14 @@ class Unit:
 	def getNicheConstructionD(self):
 		return self.D_niche_construction
 
-	def getLifespan(self):
-		return self.lifespan
+	def getResidence_time(self):
+		return self.residence_time
 
 	def getProductionRate(self):
 		return self.production_rate
 
 	def decay(self):
-		self.lifespan = self.lifespan-1
+		self.residence_time = self.residence_time-1
 
 	#Currently unused in the simulation.
 	#Partially implemented concept of types

@@ -45,7 +45,7 @@ functions,and parameters are described below.
     - [Class: Unit](#class-unit)
         + [Parameter: type](#parameter-type)
         + [Parameter: X_niche_construction](#parameter-X_niche_construction)
-        + [Parameter: lifespan](#parameter-lifespan)
+        + [Parameter: residence_time](#parameter-residence_time)
         + [Parameter: production_rate](#parameter-production_rate)
         + [Parameter: diffused](#parameter-diffused)
         + [Method: decay](#method-decay)
@@ -241,11 +241,11 @@ Integer value representing the niche construction ability of a denoted type *X*
 See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs#x_niche_construction-required) 
 for additional details about this parameters
 
-#### *<ins>Parameter: lifespan</ins>*
+#### *<ins>Parameter: residence_time</ins>*
 Integer value which stores the remaining timesteps for a unit to persist in the
 simulation if [decay](#parameter-decay) is enabled.
 
-See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs##lifespan-required-for-decay) 
+See [configs/README.md](https://github.com/ENSwR/simulation/tree/main/configs##residence_time-required-for-decay) 
 for additional details about this parameters
 
 #### *<ins>Parameter: production_rate</ins>*
@@ -261,7 +261,7 @@ more than once if they land in a new [GridCell](#class-gridcell) where extinctio
 not yet been calculted for the timestep.
 
 #### *<ins>Method: decay</ins>*
-Reduces an individual unit's [lifespan](#parameter-lifespan) by 1.
+Reduces an individual unit's [residence_time](#parameter-residence_time) by 1.
 
 #### *<ins>Method: diffuse</ins>*
 Reports a random direction of diffusion to the [diffusion function of the SimEngine](#function-diffusion)

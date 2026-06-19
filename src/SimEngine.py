@@ -91,12 +91,12 @@ def productionRateLimited(sim_environment, model, n, m):
 		.growPopulation(Population.Unit(**model.getTypeD()))
 
 #Invoke decay on all individuals
-#If an individual's lifespan is 0 then it will not
+#If an individual's residence_time is 0 then it will not
 #be in the surviving population list
 def decay(sim_environment,n,m):
 	surviving_population=[]
 	for individual in sim_environment.getLandscape()[n][m].getPopulation():
-		if individual.getLifespan() > 0:
+		if individual.getResidence_time() > 0:
 			individual.decay()
 			surviving_population.append(individual)
 	sim_environment.getLandscape()[n][m].setPopulation(surviving_population)

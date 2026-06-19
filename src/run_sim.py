@@ -72,7 +72,7 @@ def initEmptyType(model, type):
 						C_niche_construction = 0,
 						D_niche_construction = 0,
 						production_rate = 0,
-						lifespan = 0)
+						residence_time = 0)
 
 
 #Note this model supports types which are not used.
@@ -87,7 +87,7 @@ if type_A is not None:
 							#C_niche_construction = int(type_A['C_niche_construction']),
 							#D_niche_construction = int(type_A['D_niche_construction']),
 							production_rate = int(type_A['production_rate']),
-							lifespan = int(type_A['lifespan']))
+							residence_time = int(type_A['residence_time']))
 	else:
 		model.initType(type = "A",
 							A_niche_construction = int(type_A['A_niche_construction']),
@@ -106,7 +106,7 @@ if type_B is not None:
 							#C_niche_construction = int(type_B['C_niche_construction']),
 							#D_niche_construction = int(type_B['D_niche_construction']),
 							production_rate = int(type_B['production_rate']),
-							lifespan = int(type_B['lifespan']))
+							residence_time = int(type_B['residence_time']))
 	else:
 		model.initType(type = "B",
 							#A_niche_construction = int(type_B['A_niche_construction']),

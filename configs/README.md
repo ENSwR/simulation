@@ -19,7 +19,7 @@ will take on default values.
     + [infinite_resources](#infinite_resources)
 * [Type_X](#type_x)
     + [X_niche_construction](#x_niche_construction-required)
-    + [lifespan](#lifespan-required-for-decay)
+    + [residence_time](#residence_time-required-for-decay)
     + [production_rate](#production_rate-required)
 
 ## [Dials]
@@ -70,7 +70,7 @@ functionality.
 
 **Default: False**
 
-**Note:** If decay is enabled then a [lifespan](#lifespan-(required-for-decay)) parameter must be
+**Note:** If decay is enabled then a [residence_time](#residence_time-(required-for-decay)) parameter must be
 configured for both types, otherwise an error will be produced.
 
 ### <ins>diffusion</ins>
@@ -129,16 +129,16 @@ although it may not be fully developed and may not function as expected. In this
 case, the second example above will allow Type A to impact Type B's niche as well as
 its own when it is created.
 
-### <ins>lifespan</ins> (required for decay)
+### <ins>residence_time</ins> (required for decay)
 Integer value specifying the number of timesteps a unit of the type 
 will persist in the population after it has been created. Units created
-at timestep *t* will be removed at timestep *t+1+lifespan*
+at timestep *t* will be removed at timestep *t+1+residence_time*
 
 Eg:<br/>
 ```
 [Type_A]
 A_niche_construction = 0
-lifespan = 0
+residence_time = 0
 production_rate = 1
 ```
 
@@ -197,21 +197,21 @@ infinite_resources = *True/False*
 
 [Type_A]
 A_niche_construction = *integer value*
-lifespan = *integer value*
+residence_time = *integer value*
 production_rate = *integer value*
 
 [Type_B]
 B_niche_construction = *integer value*
-lifespan = *integer value*
+residence_time = *integer value*
 production_rate = *integer value*
 
 [Type_C]
 C_niche_construction = *integer value*
-lifespan = *integer value*
+residence_time = *integer value*
 production_rate = *integer value*
 
 [Type_D]
 D_niche_construction = *integer value*
-lifespan = *integer value*
+residence_time = *integer value*
 production_rate = *integer value*
 ```
